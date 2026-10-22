@@ -1,0 +1,265 @@
+@@ css-button
+tag: .btn
+title: 見た目を整えたボタン
+group: parts
+summary: 色・角丸・押したときの変化をつけた、見栄えのよいボタン。
+keywords: ぼたん ボタン 装飾 角丸 ホバー デザイン
+related: button, a
+>> explain
+`<button>` や `<a>` にCSSを当てて、見栄えのよいボタンにする例です。背景色、角の丸み、マウスを乗せたときの色の変化を指定しています。
+
+リンクをボタンの見た目にするときは、`<a>` に同じCSSを当てます。
+>> html
+<button class="btn">保存する</button>
+<button class="btn btn-sub">キャンセル</button>
+>> css
+.btn { padding: 10px 22px; border: 2px solid #1f4fb0; border-radius: 8px; background: #1f4fb0; color: #fff; font-size: 16px; cursor: pointer; transition: background .15s; }
+.btn:hover { background: #163a85; }
+.btn-sub { background: #fff; color: #1f4fb0; }
+.btn-sub:hover { background: #eef3ff; }
+>> notes
+- ボタンは、マウスを乗せたときや、キーボードで選んだときの見た目も用意すると親切です。
+
+@@ card
+tag: .card
+title: カード
+group: parts
+summary: 画像・見出し・文章を、枠と影でひとまとまりにした部品。
+keywords: かーど 枠 影 パネル ボックス 一覧
+related: card-grid, article
+>> explain
+カードは、関連する情報(見出し、文章、画像など)を、枠や影でまとめて見せる部品です。商品や記事の一覧によく使います。
+>> html
+<div class="card">
+  <img src="sample.svg" alt="サンプル画像">
+  <div class="card-body">
+    <h3>カードの見出し</h3>
+    <p>カードの本文がここに入ります。</p>
+  </div>
+</div>
+>> css
+.card { width: 260px; border: 1px solid #dde; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+.card img { display: block; width: 100%; height: auto; }
+.card-body { padding: 12px 16px; }
+.card-body h3 { margin: 0 0 6px; }
+.card-body p { margin: 0; }
+>> notes
+- 角を丸くしたカードの中で画像もはみ出さないように、`overflow: hidden` を指定しています。
+
+@@ navbar
+tag: .navbar
+title: ナビゲーションバー
+group: parts
+summary: ロゴとメニューを横に並べた、ページ上部のバー。
+keywords: なびげーしょん ばー メニュー ヘッダー 横並び
+related: nav, flexbox, sticky-header
+>> explain
+ページ上部の、ロゴとメニューを横に並べたバーの例です。HTMLは `<nav>` と `<ul>` で意味を伝え、CSSの `flexbox` で横に並べています。
+>> html
+<nav class="navbar">
+  <a class="logo" href="#">サンプル</a>
+  <ul>
+    <li><a href="#">ホーム</a></li>
+    <li><a href="#">診療案内</a></li>
+    <li><a href="#">アクセス</a></li>
+  </ul>
+</nav>
+>> css
+.navbar { display: flex; justify-content: space-between; align-items: center; background: #1f4fb0; padding: 8px 16px; }
+.navbar .logo { color: #fff; font-weight: bold; text-decoration: none; }
+.navbar ul { display: flex; gap: 16px; margin: 0; padding: 0; list-style: none; }
+.navbar ul a { color: #fff; text-decoration: none; }
+.navbar ul a:hover { text-decoration: underline; }
+>> notes
+- 幅が狭いスマホでは、メニューが収まらないことがあります。折りたたむには、さらに工夫が必要です。
+
+@@ accordion
+tag: details + summary
+title: アコーディオン
+group: parts
+summary: 見出しをクリックして、答えを開閉するQ&Aの部品。
+keywords: あこーでぃおん 折りたたみ よくある質問 faq 開閉
+related: details, summary
+>> explain
+アコーディオンは、見出しをクリックすると内容が開閉する部品で、よくある質問(FAQ)などに使います。`<details>` と `<summary>` を使えば、JavaScriptなしで作れます。
+>> html
+<details class="qa">
+  <summary>予約は必要ですか?</summary>
+  <p>予約なしでも受診できます。</p>
+</details>
+<details class="qa">
+  <summary>支払い方法は?</summary>
+  <p>現金のほか、一部のカードが使えます。</p>
+</details>
+>> css
+.qa { border: 1px solid #ccd; border-radius: 8px; padding: 8px 14px; margin-bottom: 8px; }
+.qa summary { font-weight: bold; cursor: pointer; }
+.qa p { margin: 8px 0 0; }
+>> notes
+- 1つ開くと他が閉じる動きにするには、JavaScriptまたは追加の属性が必要です。
+
+@@ badge
+tag: .badge
+title: バッジ(ラベル)
+group: parts
+summary: 「新着」「重要」などの、小さな目印のラベル。
+keywords: ばっじ ラベル タグ 新着 目印 ステータス
+related: span, mark
+>> explain
+バッジは、「新着」「重要」のような短い目印を、色つきの小さなラベルで示す部品です。`<span>` にCSSを当てて作ります。
+>> html
+<p>お知らせ <span class="badge">新着</span></p>
+<p>メンテナンス <span class="badge badge-warn">重要</span></p>
+>> css
+.badge { display: inline-block; padding: 1px 10px; border-radius: 999px; background: #1f4fb0; color: #fff; font-size: 12px; }
+.badge-warn { background: #d9534f; }
+>> notes
+- 色だけで意味を伝えず、文字でも意味が分かるようにします。
+
+@@ alert
+tag: .alert
+title: 通知・注意のボックス
+group: parts
+summary: 注意、成功、エラーなどのメッセージを、色つきの箱で目立たせる。
+keywords: あらーと 通知 注意 警告 メッセージ 成功 エラー
+related: aside, badge
+>> explain
+通知ボックスは、利用者に伝えたいメッセージを、色つきの箱で目立たせる部品です。`role="alert"` を付けると、読み上げソフトにも伝わりやすくなります。
+>> html
+<div class="alert alert-info" role="alert">情報:お知らせです。</div>
+<div class="alert alert-warn" role="alert">注意:内容をご確認ください。</div>
+>> css
+.alert { padding: 10px 14px; border-radius: 8px; border-left: 5px solid; margin-bottom: 8px; }
+.alert-info { background: #eaf2ff; border-color: #1f4fb0; color: #163a85; }
+.alert-warn { background: #fff3d6; border-color: #e0a100; color: #6b4a00; }
+>> notes
+- 色だけで種類を伝えず、「注意」「エラー」など文字も添えます。
+
+@@ breadcrumb
+tag: .crumbs
+title: パンくずリスト
+group: parts
+summary: 「ホーム › 診療案内 › 泌尿器科」のような、現在地の道筋。
+keywords: ぱんくず 現在地 階層 ナビ 道筋
+related: nav, ol
+>> explain
+パンくずリストは、いま見ているページが、サイトのどこにあるかを示す道筋です。`<nav>` の中に `<ol>` を使い、CSSで区切りの記号をつけます。
+>> html
+<nav aria-label="パンくずリスト">
+  <ol class="crumbs">
+    <li><a href="#">ホーム</a></li>
+    <li><a href="#">診療案内</a></li>
+    <li>泌尿器科</li>
+  </ol>
+</nav>
+>> css
+.crumbs { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; }
+.crumbs li + li::before { content: "›"; margin-right: 6px; color: #889; }
+>> notes
+- 区切りの記号は、CSSの `::before` で付けると、HTMLがすっきりします。
+
+@@ pagination
+tag: .pager
+title: ページ送り
+group: parts
+summary: 「1 2 3 次へ」のような、ページを移動するための番号の列。
+keywords: ぺーじねーしょん ページ送り 番号 次へ 前へ
+related: nav, ul
+>> explain
+ページ送りは、複数のページに分かれた一覧で、別のページへ移動する番号の列です。`<nav>` と `<ul>` で書き、CSSで横に並べます。
+>> html
+<nav aria-label="ページ送り">
+  <ul class="pager">
+    <li><a href="#">前へ</a></li>
+    <li><a href="#" aria-current="page">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">次へ</a></li>
+  </ul>
+</nav>
+>> css
+.pager { display: flex; gap: 6px; list-style: none; padding: 0; }
+.pager a { display: block; padding: 4px 12px; border: 1px solid #ccd; border-radius: 6px; text-decoration: none; }
+.pager a[aria-current] { background: #1f4fb0; color: #fff; border-color: #1f4fb0; }
+>> notes
+- 今いるページには `aria-current="page"` を付けると、機械にも伝わります。
+
+@@ hero
+tag: .hero
+title: ヒーロー(トップの大きな見出し)
+group: parts
+summary: ページ最上部の、大きな見出しと案内を目立たせた領域。
+keywords: ひーろー メインビジュアル トップ バナー キャッチコピー
+related: header, css-button
+>> explain
+ヒーローは、ページを開いたときに最初に目に入る、大きな見出しと案内のある領域です。背景の色や画像と、大きな文字で印象を与えます。
+>> html
+<section class="hero">
+  <h1>地域のかかりつけ医</h1>
+  <p>泌尿器科・腎臓内科・皮膚科</p>
+  <a class="hero-btn" href="#">診療案内を見る</a>
+</section>
+>> css
+.hero { text-align: center; padding: 48px 16px; background: linear-gradient(135deg, #1f4fb0, #5b8def); color: #fff; border-radius: 10px; }
+.hero h1 { margin: 0 0 8px; font-size: 28px; }
+.hero p { margin: 0 0 16px; }
+.hero-btn { display: inline-block; padding: 10px 24px; background: #fff; color: #1f4fb0; border-radius: 8px; text-decoration: none; font-weight: bold; }
+>> notes
+- 背景の上の文字は、読みやすい色の組み合わせにします。
+
+@@ form-layout
+tag: .f
+title: 見やすい入力フォーム
+group: parts
+summary: ラベルと入力欄を縦に並べ、幅をそろえたフォーム。
+keywords: ふぉーむ 入力欄 配置 縦並び 問い合わせ 整える
+related: form, input, label
+>> explain
+ラベルと入力欄を縦に並べ、幅をそろえて見やすくしたフォームの例です。各入力欄を `<label>` で結びつけ、CSSで幅と余白をそろえています。
+>> html
+<form class="f">
+  <label>お名前
+    <input type="text" name="name">
+  </label>
+  <label>メールアドレス
+    <input type="email" name="email">
+  </label>
+  <label>お問い合わせ内容
+    <textarea name="body" rows="4"></textarea>
+  </label>
+  <button type="submit">送信</button>
+</form>
+>> css
+.f { max-width: 360px; }
+.f label { display: block; margin-bottom: 12px; font-size: 14px; }
+.f input, .f textarea { display: block; width: 100%; padding: 8px; margin-top: 4px; border: 1px solid #99a; border-radius: 6px; font: inherit; box-sizing: border-box; }
+.f button { padding: 8px 24px; background: #1f4fb0; color: #fff; border: 0; border-radius: 6px; font-size: 16px; }
+>> notes
+- `box-sizing: border-box` を指定すると、余白を含めた幅で収まります。
+
+@@ striped-table
+tag: .striped
+title: 縞模様の表
+group: parts
+summary: 1行おきに背景色を変えて、読みやすくした表。
+keywords: しまもよう ストライプ 表 見やすい 交互 背景
+related: table, tbody
+>> explain
+1行おきに背景色を変えた表の例です。行を目で追いやすくなります。`:nth-child(even)` で、偶数番目の行を指定しています。
+>> html
+<table class="striped">
+  <thead><tr><th>曜日</th><th>時間</th></tr></thead>
+  <tbody>
+    <tr><td>月</td><td>9:00〜18:00</td></tr>
+    <tr><td>火</td><td>9:00〜18:00</td></tr>
+    <tr><td>水</td><td>9:00〜12:00</td></tr>
+    <tr><td>木</td><td>9:00〜18:00</td></tr>
+  </tbody>
+</table>
+>> css
+.striped { border-collapse: collapse; width: 100%; max-width: 360px; }
+.striped th, .striped td { padding: 8px 12px; text-align: left; }
+.striped thead { background: #1f4fb0; color: #fff; }
+.striped tbody tr:nth-child(even) { background: #f1f4fb; }
+>> notes
+- 行が増えても、CSSは変えずに縞模様が続きます。

@@ -1,0 +1,224 @@
+@@ flexbox
+tag: display: flex
+title: フレックスボックス(横並び)
+group: layout
+summary: 要素を横(または縦)に並べ、間隔や揃え方を調整する。
+keywords: ふれっくす よこならび 横並び 配置 レイアウト justify-content gap
+related: grid, center, navbar
+>> explain
+`display: flex` を親要素に指定すると、中の要素が横に並びます。間隔は `gap`、横方向の揃え方は `justify-content`、縦方向の揃え方は `align-items` で指定します。
+
+縦に並べたいときは `flex-direction: column` を使います。1方向に並べる配置が得意です。
+>> html
+<div class="row">
+  <div class="item">A</div>
+  <div class="item">B</div>
+  <div class="item">C</div>
+</div>
+>> css
+.row { display: flex; gap: 12px; justify-content: space-between; align-items: center; }
+.item { background: #eef3ff; border: 1px solid #5b7bd5; padding: 16px 24px; }
+>> notes
+- 子の要素の並び方は、親に指定することで決まります。
+- 縦と横の両方向を同時に整えるには `grid` が向いています。
+
+@@ grid
+tag: display: grid
+title: グリッド(格子状の配置)
+group: layout
+summary: 要素を、行と列の格子状に並べる。
+keywords: ぐりっど 格子 行 列 レイアウト 段組み grid-template-columns
+related: flexbox, card-grid, two-column
+>> explain
+`display: grid` を親要素に指定すると、中の要素が行と列の格子に並びます。列の数と幅は `grid-template-columns` で指定します。
+
+`repeat(3, 1fr)` は、同じ幅の列を3つ並べる、という意味です。
+>> html
+<div class="grid">
+  <div>1</div><div>2</div><div>3</div>
+  <div>4</div><div>5</div><div>6</div>
+</div>
+>> css
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.grid div { background: #eef3ff; border: 1px solid #5b7bd5; padding: 16px; text-align: center; }
+>> notes
+- `gap` で、行と列の間隔をまとめて指定できます。
+- 横1列に並べるだけなら `flexbox` でも足ります。
+
+@@ center
+tag: 中央寄せ
+title: 中央に寄せる
+group: layout
+summary: 文字や箱を、上下左右の中央に配置する。
+keywords: ちゅうおうよせ 真ん中 センタリング 上下中央 水平 垂直
+related: flexbox, grid
+>> explain
+中央寄せは、目的によって方法が変わります。文字なら `text-align: center`、横幅のある箱なら `margin: 0 auto` が基本です。
+
+箱の中の要素を、上下左右の中央に置くには、親に `display: flex` と `justify-content: center`、`align-items: center` を指定します。
+>> html
+<p class="t">文字を中央に</p>
+<div class="stage"><div class="box">箱を上下左右の中央に</div></div>
+>> css
+.t { text-align: center; }
+.stage { display: flex; justify-content: center; align-items: center; height: 120px; background: #f3f5fb; }
+.box { background: #fff; border: 1px solid #5b7bd5; padding: 12px 20px; }
+>> notes
+- 上下に中央寄せするには、親に高さがある必要があります。
+
+@@ responsive
+tag: レスポンシブ
+title: 画面幅に合わせて変わる
+group: layout
+summary: PCとスマホで、画面幅に合わせて自然に並びを変える。
+keywords: れすぽんしぶ スマホ 画面幅 可変 自動調整 モバイル
+related: media-query, grid, card-grid
+>> explain
+レスポンシブは、画面の幅に合わせて、レイアウトを自動で変える考え方です。スマホ対応には、HTMLに `<meta name="viewport">` を書くことが前提になります。
+
+下の例では、`flex-wrap: wrap` で、幅が足りないとき自動で折り返します。結果枠の下端をドラッグして幅を変えて試せます(幅が狭い画面では折り返します)。
+>> html
+<div class="wrap">
+  <div class="c">A</div>
+  <div class="c">B</div>
+  <div class="c">C</div>
+  <div class="c">D</div>
+</div>
+>> css
+.wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+.c { flex: 1 1 140px; background: #eef3ff; border: 1px solid #5b7bd5; padding: 20px; text-align: center; }
+>> notes
+- `flex: 1 1 140px` は、「最低140pxを目安に、余った幅は均等に伸ばす」という意味です。
+- 画面幅で見た目を大きく切り替えたいときは、`media-query` も使います。
+
+@@ sticky-header
+tag: position: sticky
+title: スクロールしても残るヘッダー
+group: layout
+summary: スクロールしても、画面の上に固定されたままのヘッダー。
+keywords: すてぃっきー 固定 ヘッダー スクロール 追従 sticky
+related: navbar, position
+>> explain
+`position: sticky` と `top: 0` を指定すると、その要素は、スクロールしても画面の上端にくっついて残ります。固定ヘッダーによく使います。
+>> html
+<div class="sh">固定ヘッダー</div>
+<p>スクロールして試してください。</p>
+<p>文章1</p><p>文章2</p><p>文章3</p><p>文章4</p><p>文章5</p>
+<p>文章6</p><p>文章7</p><p>文章8</p><p>文章9</p><p>文章10</p>
+<p>文章11</p><p>文章12</p><p>文章13</p><p>文章14</p><p>文章15</p>
+>> css
+.sh { position: sticky; top: 0; background: #1f4fb0; color: #fff; padding: 10px 16px; }
+>> notes
+- 親要素に `overflow: hidden` などがあると、うまく効かないことがあります。
+
+@@ two-column
+tag: 2カラム
+title: 2カラム(本文とサイドバー)
+group: layout
+summary: 左に本文、右にサイドバーを並べる2段組みのレイアウト。
+keywords: にからむ 2段組み サイドバー 本文 二列
+related: grid, flexbox, aside
+>> explain
+2カラムは、メインの本文と、補足のサイドバーを横に並べるレイアウトです。`grid-template-columns` で、本文は伸びる幅、サイドバーは固定の幅に指定しています。
+>> html
+<div class="layout">
+  <main>本文がここに入ります。</main>
+  <aside>サイドバー</aside>
+</div>
+>> css
+.layout { display: grid; grid-template-columns: 1fr 160px; gap: 16px; }
+.layout main { background: #f3f5fb; padding: 16px; min-height: 120px; }
+.layout aside { background: #eef3ff; padding: 16px; }
+>> notes
+- スマホなど幅が狭いときは、縦に積む設定にすると見やすくなります(`media-query` を参照)。
+
+@@ card-grid
+tag: カード一覧
+title: カードを格子状に並べる
+group: layout
+summary: 同じ大きさのカードを、画面幅に合わせて自動で並べる。
+keywords: かーどいちらん 一覧 格子 自動 折り返し auto-fill
+related: card, grid, responsive
+>> explain
+同じ大きさのカードを、画面の幅に合わせて自動で何列かに並べる書き方です。`repeat(auto-fill, minmax(140px, 1fr))` は、「幅が最低140pxの列を、入る数だけ並べる」という意味です。
+>> html
+<div class="cards">
+  <div class="k">カード1</div>
+  <div class="k">カード2</div>
+  <div class="k">カード3</div>
+  <div class="k">カード4</div>
+</div>
+>> css
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+.k { background: #fff; border: 1px solid #ccd; border-radius: 8px; padding: 24px 12px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
+>> notes
+- 列の数をCSSで決めなくても、画面幅に合わせて自動で変わります。
+
+@@ sticky-footer
+tag: フッター固定
+title: 内容が短くても下に来るフッター
+group: layout
+summary: ページの内容が短いときも、フッターを画面の下に置く。
+keywords: ふったーこてい 画面下 最下部 短いページ min-height
+related: footer, flexbox
+>> explain
+ページの内容が短いと、フッターが画面の途中に浮いてしまうことがあります。`body` に `min-height: 100vh` と `display: flex`、`flex-direction: column` を指定し、本文に `flex: 1` を指定すると、フッターが画面の下に来ます。
+>> html
+<div class="page">
+  <main>短い本文</main>
+  <footer>フッター</footer>
+</div>
+>> css
+.page { min-height: 100vh; display: flex; flex-direction: column; }
+.page main { flex: 1; padding: 16px; }
+.page footer { background: #1f4fb0; color: #fff; padding: 12px 16px; }
+>> notes
+- 結果枠の高さが小さいと、この効果は確認しにくいことがあります。
+
+@@ media-query
+tag: @media
+title: 画面幅で切り替える(メディアクエリ)
+group: layout
+summary: 画面の幅によって、CSSの内容を切り替える。
+keywords: めでぃあくえり スマホ 画面幅 切り替え ブレークポイント
+related: responsive, two-column
+>> explain
+メディアクエリは、「画面の幅がこれ以下のときだけ、このCSSを使う」という条件つきのCSSです。`@media (max-width: 600px) { ... }` のように書きます。
+
+下の例は、幅が広いときは横に並び、600px以下では縦に積みます。
+>> html
+<div class="mq">
+  <div>A</div>
+  <div>B</div>
+</div>
+>> css
+.mq { display: flex; gap: 12px; }
+.mq div { flex: 1; background: #eef3ff; border: 1px solid #5b7bd5; padding: 20px; text-align: center; }
+@media (max-width: 600px) {
+  .mq { flex-direction: column; }
+}
+>> notes
+- 切り替える幅の値(ブレークポイント)は、デザインに合わせて決めます。
+- スマホで正しく動かすには、`<meta name="viewport">` の指定が必要です。
+
+@@ position
+tag: position
+title: 位置の指定
+group: layout
+summary: 要素を、通常の位置からずらしたり、決まった場所に置いたりする。
+keywords: ぽじしょん 位置 絶対配置 absolute relative 重ねる
+related: sticky-header
+>> explain
+`position` は、要素の位置の決め方を指定します。`relative` は元の位置を基準に動かせます。`absolute` は、位置を決めた親(`relative` などを指定した要素)の中の、決まった場所に置けます。
+
+`absolute` を使うときは、親に `position: relative` を指定しておくのが基本です。
+>> html
+<div class="parent">
+  親の箱
+  <span class="badge">NEW</span>
+</div>
+>> css
+.parent { position: relative; width: 200px; height: 80px; padding: 12px; background: #f3f5fb; border: 1px solid #99a; }
+.badge { position: absolute; top: -10px; right: -10px; background: #d9534f; color: #fff; padding: 2px 10px; border-radius: 999px; font-size: 12px; }
+>> notes
+- `absolute` の要素は、通常の流れから外れ、ほかの要素に場所をあけません。

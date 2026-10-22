@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>スクロールしても残るヘッダー（sticky-header）｜HTML・CSS コード図鑑</title>
+<meta name="description" content="スクロールしても、画面の上に固定されたままのヘッダー。">
+<link rel="canonical" href="https://KtoAQs0zU2f6.github.io/web_html/sticky-header/">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../">
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../">HTML・CSS コード図鑑</a>
+    <div class="search">
+      <input id="q" type="search" placeholder="コードを検索(例: 表、ボタン、中央寄せ)" aria-label="コードを検索" autocomplete="off">
+      <ul id="results" class="results" hidden></ul>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <nav class="crumb"><a href="../">トップ</a> › CSSレイアウト</nav>
+  <h1>スクロールしても残るヘッダー <code class="tagname">position: sticky</code></h1>
+  <p class="lead">スクロールしても、画面の上に固定されたままのヘッダー。</p>
+  <p class="meta">CSSレイアウト ／ CSSレイアウト</p>
+  <p class="badge-unreviewed">この解説は確認前です。内容に誤りがある可能性があります。</p>
+  <section>
+    <h2>何ができるか</h2>
+    <p><code>position: sticky</code> と <code>top: 0</code> を指定すると、その要素は、スクロールしても画面の上端にくっついて残ります。固定ヘッダーによく使います。</p>
+  </section>
+  <section><h2>実行結果</h2><iframe class="preview" title="実行結果" sandbox="allow-scripts" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;ja&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;style&gt;body{font-family:sans-serif;margin:12px;line-height:1.6}&lt;/style&gt;&lt;style&gt;.sh { position: sticky; top: 0; background: #1f4fb0; color: #fff; padding: 10px 16px; }&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;sh&quot;&gt;固定ヘッダー&lt;/div&gt;
+&lt;p&gt;スクロールして試してください。&lt;/p&gt;
+&lt;p&gt;文章1&lt;/p&gt;&lt;p&gt;文章2&lt;/p&gt;&lt;p&gt;文章3&lt;/p&gt;&lt;p&gt;文章4&lt;/p&gt;&lt;p&gt;文章5&lt;/p&gt;
+&lt;p&gt;文章6&lt;/p&gt;&lt;p&gt;文章7&lt;/p&gt;&lt;p&gt;文章8&lt;/p&gt;&lt;p&gt;文章9&lt;/p&gt;&lt;p&gt;文章10&lt;/p&gt;
+&lt;p&gt;文章11&lt;/p&gt;&lt;p&gt;文章12&lt;/p&gt;&lt;p&gt;文章13&lt;/p&gt;&lt;p&gt;文章14&lt;/p&gt;&lt;p&gt;文章15&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></section>
+  <section>
+    <h2>コード</h2>
+    <div class="codeblock"><div class="bar"><span>HTML</span><button type="button" class="copy" data-target="code-html">コピー</button></div><pre id="code-html"><code>&lt;div class=&quot;sh&quot;&gt;固定ヘッダー&lt;/div&gt;
+&lt;p&gt;スクロールして試してください。&lt;/p&gt;
+&lt;p&gt;文章1&lt;/p&gt;&lt;p&gt;文章2&lt;/p&gt;&lt;p&gt;文章3&lt;/p&gt;&lt;p&gt;文章4&lt;/p&gt;&lt;p&gt;文章5&lt;/p&gt;
+&lt;p&gt;文章6&lt;/p&gt;&lt;p&gt;文章7&lt;/p&gt;&lt;p&gt;文章8&lt;/p&gt;&lt;p&gt;文章9&lt;/p&gt;&lt;p&gt;文章10&lt;/p&gt;
+&lt;p&gt;文章11&lt;/p&gt;&lt;p&gt;文章12&lt;/p&gt;&lt;p&gt;文章13&lt;/p&gt;&lt;p&gt;文章14&lt;/p&gt;&lt;p&gt;文章15&lt;/p&gt;</code></pre></div>
+    <div class="codeblock"><div class="bar"><span>CSS</span><button type="button" class="copy" data-target="code-css">コピー</button></div><pre id="code-css"><code>.sh { position: sticky; top: 0; background: #1f4fb0; color: #fff; padding: 10px 16px; }</code></pre></div>
+  </section>
+  <section id="playground" class="playground"><h2>試してみる</h2><p>左の欄を書き換えると、右の結果がすぐ変わります。</p><div class="pg-grid"><div class="pg-edit"><label for="pg-html">HTML</label><textarea id="pg-html" spellcheck="false" autocomplete="off">&lt;div class=&quot;sh&quot;&gt;固定ヘッダー&lt;/div&gt;
+&lt;p&gt;スクロールして試してください。&lt;/p&gt;
+&lt;p&gt;文章1&lt;/p&gt;&lt;p&gt;文章2&lt;/p&gt;&lt;p&gt;文章3&lt;/p&gt;&lt;p&gt;文章4&lt;/p&gt;&lt;p&gt;文章5&lt;/p&gt;
+&lt;p&gt;文章6&lt;/p&gt;&lt;p&gt;文章7&lt;/p&gt;&lt;p&gt;文章8&lt;/p&gt;&lt;p&gt;文章9&lt;/p&gt;&lt;p&gt;文章10&lt;/p&gt;
+&lt;p&gt;文章11&lt;/p&gt;&lt;p&gt;文章12&lt;/p&gt;&lt;p&gt;文章13&lt;/p&gt;&lt;p&gt;文章14&lt;/p&gt;&lt;p&gt;文章15&lt;/p&gt;</textarea><label for="pg-css">CSS</label><textarea id="pg-css" spellcheck="false" autocomplete="off">.sh { position: sticky; top: 0; background: #1f4fb0; color: #fff; padding: 10px 16px; }</textarea><button type="button" id="pg-reset">元に戻す</button></div><div class="pg-out"><iframe id="pg-frame" class="preview" title="試す場所の結果" sandbox="allow-scripts" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;ja&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;style&gt;body{font-family:sans-serif;margin:12px;line-height:1.6}&lt;/style&gt;&lt;style&gt;.sh { position: sticky; top: 0; background: #1f4fb0; color: #fff; padding: 10px 16px; }&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=&quot;sh&quot;&gt;固定ヘッダー&lt;/div&gt;
+&lt;p&gt;スクロールして試してください。&lt;/p&gt;
+&lt;p&gt;文章1&lt;/p&gt;&lt;p&gt;文章2&lt;/p&gt;&lt;p&gt;文章3&lt;/p&gt;&lt;p&gt;文章4&lt;/p&gt;&lt;p&gt;文章5&lt;/p&gt;
+&lt;p&gt;文章6&lt;/p&gt;&lt;p&gt;文章7&lt;/p&gt;&lt;p&gt;文章8&lt;/p&gt;&lt;p&gt;文章9&lt;/p&gt;&lt;p&gt;文章10&lt;/p&gt;
+&lt;p&gt;文章11&lt;/p&gt;&lt;p&gt;文章12&lt;/p&gt;&lt;p&gt;文章13&lt;/p&gt;&lt;p&gt;文章14&lt;/p&gt;&lt;p&gt;文章15&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div></section>
+  <section><h2>注意点</h2><ul><li>親要素に <code>overflow: hidden</code> などがあると、うまく効かないことがあります。</li></ul></section>
+  <section><h2>関連コード</h2><ul class="related"><li><a href="../navbar/"><code>.navbar</code> ナビゲーションバー</a></li><li><a href="../position/"><code>position</code> 位置の指定</a></li></ul></section>
+  
+</main>
+<footer class="site-footer"><div class="wrap"><a href="../">HTML・CSS コード図鑑</a></div></footer>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/search.js"></script>
+<script src="../assets/page.js"></script>
+</body>
+</html>

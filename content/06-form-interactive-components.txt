@@ -1,0 +1,356 @@
+@@ button
+tag: <button>
+title: ボタン
+group: form
+summary: クリックできるボタンを作る。送信や、操作の開始に使う。
+keywords: ぼたん ボタン クリック 送信 submit
+related: input, form, a
+>> explain
+`<button>` は、クリックできるボタンです。フォームの中では、`type="submit"` で送信ボタンに、`type="button"` でただのボタンになります。
+
+ボタンの中には、文字だけでなく画像なども入れられます。
+>> html
+<button type="button">ボタン</button>
+<button type="submit">送信</button>
+>> css
+button { padding: 8px 18px; border: 0; border-radius: 6px; background: #1f4fb0; color: #fff; font-size: 16px; cursor: pointer; }
+button:hover { background: #163a85; }
+>> notes
+- フォームの中の `<button>` は、`type` を省略すると送信ボタンになります。送信させたくないときは `type="button"` を書きます。
+- 移動するだけなら、リンク(`<a>`)を使います。
+
+@@ datalist
+tag: <datalist>
+title: 入力候補リスト
+group: form
+summary: 入力欄に表示する、候補のリストを用意する。
+keywords: でーたりすと 入力候補 サジェスト オートコンプリート
+related: input, option
+>> explain
+`<datalist>` は、入力欄に出す候補の一覧です。入力欄の `list` 属性に、`<datalist>` の `id` を指定して結びつけます。候補にない文字も入力できます。
+>> html
+<label for="city">市町村</label>
+<input id="city" list="cities" name="city">
+<datalist id="cities">
+  <option value="鴻巣市">
+  <option value="北本市">
+  <option value="熊谷市">
+</datalist>
+>> notes
+- 候補以外の文字も入力できます。選択肢を限定したいときは `<select>` を使います。
+
+@@ fieldset
+tag: <fieldset>
+title: フォーム部品のグループ
+group: form
+summary: 関連する入力欄を枠で囲んでグループにする。
+keywords: ふぃーるどせっと グループ 枠 まとめる フォーム
+related: legend, form
+>> explain
+`<fieldset>` は、関連するフォーム部品を1つのグループにまとめ、枠で囲みます。中の最初に `<legend>` を置くと、グループの名前になります。
+>> html
+<fieldset>
+  <legend>性別</legend>
+  <label><input type="radio" name="g" value="m"> 男性</label>
+  <label><input type="radio" name="g" value="f"> 女性</label>
+</fieldset>
+>> notes
+- `disabled` 属性を付けると、グループの中の部品をまとめて無効にできます。
+
+@@ form
+tag: <form>
+title: フォーム
+group: form
+summary: 入力欄やボタンをまとめ、入力内容を送信できるようにする。
+keywords: ふぉーむ 入力 送信 問い合わせ アンケート
+related: input, label, button, fieldset
+>> explain
+`<form>` は、入力欄(`<input>`、`<select>`、`<textarea>` など)と送信ボタンをまとめる要素です。`action` に送信先、`method` に送信の方法(`get` か `post`)を書きます。
+
+HTMLだけでは、入力内容を受け取って処理することはできません。受け取る側のサーバーの仕組みが必要です。
+>> html
+<form action="/submit" method="post">
+  <p><label>お名前 <input type="text" name="name"></label></p>
+  <p><button type="submit">送信</button></p>
+</form>
+>> notes
+- この図鑑の結果枠では、送信ボタンを押しても送信はできません。
+
+@@ input
+tag: <input>
+title: 入力欄
+group: form
+summary: 文字、チェック、日付など、さまざまな入力欄を作る。
+keywords: いんぷっと 入力欄 テキスト チェックボックス ラジオ 日付 type
+related: label, textarea, select, button, form
+>> explain
+`<input>` は、`type` 属性によって、入力欄の種類が変わります。`type="text"` は1行の文字入力、`checkbox` はチェック、`radio` は1つ選ぶ選択、`date` は日付、`number` は数値の入力欄になります。
+
+必ず `<label>` と組み合わせて、何を入力する欄かをわかるようにします。
+>> html
+<p><label>名前 <input type="text" name="name" placeholder="例: 田中"></label></p>
+<p><label>年齢 <input type="number" name="age" min="0"></label></p>
+<p><label>日付 <input type="date" name="d"></label></p>
+<p><label><input type="checkbox" name="agree"> 同意する</label></p>
+>> notes
+- 終了タグはありません。
+- 種類(`type`)ごとの個別の解説は、この図鑑には載せていません。
+- `placeholder` は、ラベルの代わりにはなりません。
+
+@@ label
+tag: <label>
+title: 入力欄のラベル
+group: form
+summary: 入力欄に名前をつける。クリックで入力欄が選ばれる。
+keywords: らべる 項目名 ラベル for
+related: input, select, textarea
+>> explain
+`<label>` は、入力欄の名前をつけるタグです。ラベルの文字をクリックすると、結びつけられた入力欄が選ばれます。
+
+結びつけるには、入力欄を `<label>` の中に入れるか、`for` 属性に入力欄の `id` を書きます。
+>> html
+<p><label for="a">名前</label> <input id="a" type="text"></p>
+<p><label><input type="checkbox"> 同意する</label></p>
+>> notes
+- ラベルがあると、小さなチェックボックスも文字をクリックして選べます。
+
+@@ legend
+tag: <legend>
+title: グループの名前
+group: form
+summary: `<fieldset>` でまとめたグループに、名前をつける。
+keywords: れじぇんど グループ名 見出し fieldset
+related: fieldset
+>> explain
+`<legend>` は、`<fieldset>` の最初の子として置き、グループの名前を示します。枠の左上に表示されます。
+>> html
+<fieldset>
+  <legend>お支払い方法</legend>
+  <label><input type="radio" name="pay"> 現金</label>
+  <label><input type="radio" name="pay"> カード</label>
+</fieldset>
+>> notes
+- `<fieldset>` の外では使えません。
+
+@@ meter
+tag: <meter>
+title: 範囲内の量メーター
+group: form
+summary: 決まった範囲の中の値を、メーターで表す。
+keywords: めーたー 量 バー ゲージ 残量
+related: progress
+>> explain
+`<meter>` は、決まった範囲の中の量(ディスク使用量、評価の点数など)をメーターで示します。`min`、`max`、`value` で範囲と値を指定します。
+
+進み具合には、`<progress>` を使います。
+>> html
+<label>使用量: <meter min="0" max="100" value="70">70%</meter></label>
+>> notes
+- 値が範囲を越えると、見た目は上限に固定されます。
+- 作業の進み具合は `<progress>` を使います。
+
+@@ optgroup
+tag: <optgroup>
+title: 選択肢のグループ
+group: form
+summary: `<select>` の選択肢を、グループに分ける。
+keywords: おぷとぐるーぷ 選択肢 グループ 分類
+related: select, option
+>> explain
+`<optgroup>` は、`<select>` の中の選択肢をグループに分けます。`label` 属性が、グループの名前として表示されます。
+>> html
+<select>
+  <optgroup label="果物">
+    <option>りんご</option>
+    <option>みかん</option>
+  </optgroup>
+  <optgroup label="野菜">
+    <option>にんじん</option>
+  </optgroup>
+</select>
+>> notes
+- グループの名前は、選べない見出しとして表示されます。
+
+@@ option
+tag: <option>
+title: 選択肢
+group: form
+summary: プルダウンやリストの、1つの選択肢。
+keywords: おぷしょん 選択肢 プルダウン value
+related: select, optgroup, datalist
+>> explain
+`<option>` は、`<select>` や `<datalist>` の中の選択肢です。`value` 属性には送信される値を書き、省略すると中の文字が値になります。
+>> html
+<select>
+  <option value="a">A 選択肢</option>
+  <option value="b" selected>B 選択肢(最初から選択)</option>
+</select>
+>> notes
+- `selected` を付けると、最初から選ばれた状態になります。
+
+@@ output
+tag: <output>
+title: 計算結果の表示
+group: form
+summary: 計算やユーザー操作の結果を表示する。
+keywords: あうとぷっと 結果 計算 表示
+related: input, form
+>> explain
+`<output>` は、計算や操作の結果を表示するための要素です。通常は、入力欄の値を使った計算結果を、JavaScriptで書き込んで使います。
+
+下の例は、結果の表示の部分だけを静的に書いたものです。
+>> html
+<form>
+  <label>合計: <output name="total">300</output></label>
+</form>
+>> notes
+- 結果を自動で更新するには、JavaScriptが必要です(この図鑑では解説しません)。
+
+@@ progress
+tag: <progress>
+title: 進み具合バー
+group: form
+summary: 作業の進み具合を、バーで表す。
+keywords: ぷろぐれす 進捗 プログレスバー 読み込み
+related: meter
+>> explain
+`<progress>` は、作業の進み具合を表すバーです。`max` で全体の量、`value` で現在の値を指定します。`value` を省略すると、「処理中」を表す動きのある表示になります。
+>> html
+<label>進み具合: <progress max="100" value="40">40%</progress></label>
+>> notes
+- 量や割合を示すだけなら、`<meter>` を使います。
+
+@@ select
+tag: <select>
+title: プルダウン(選択リスト)
+group: form
+summary: 選択肢の中から選ぶ、プルダウンメニューを作る。
+keywords: せれくと プルダウン ドロップダウン 選択 リスト
+related: option, optgroup, label
+>> explain
+`<select>` は、選択肢のリストから選ぶ入力欄です。中に `<option>` を並べて選択肢にします。`multiple` を付けると、複数選択ができます。
+>> html
+<label>診療科
+  <select name="dept">
+    <option value="uro">泌尿器科</option>
+    <option value="derm">皮膚科</option>
+  </select>
+</label>
+>> notes
+- 選択肢が少ないときは、ラジオボタンの方が一覧しやすいこともあります。
+
+@@ textarea
+tag: <textarea>
+title: 複数行の入力欄
+group: form
+summary: 複数行の文章を入力する欄を作る。
+keywords: てきすとえりあ 複数行 コメント 長文 入力
+related: input, label
+>> explain
+`<textarea>` は、複数行の文章を入力できる欄です。`rows` や `cols` で、見た目の大きさを指定できます。タグの間に書いた文字が、最初から入った状態になります。
+>> html
+<label>ご意見<br>
+  <textarea name="comment" rows="4" cols="30">ここに入力</textarea>
+</label>
+>> css
+textarea { font: inherit; }
+>> notes
+- タグの間の空白や改行も、そのまま文字として扱われます。
+
+@@ details
+tag: <details>
+title: 開閉できる説明
+group: interactive
+summary: クリックで開閉できる、折りたたみの領域を作る。
+keywords: でぃてーるず 折りたたみ アコーディオン 開閉 よくある質問
+related: summary, accordion
+>> explain
+`<details>` は、クリックで中身を開閉できる領域です。最初に見える部分は、中の `<summary>` に書き、開いたときに見える内容をその後ろに書きます。
+
+JavaScriptなしで開閉できます。`open` 属性を付けると、最初から開いた状態になります。
+>> html
+<details>
+  <summary>よくある質問</summary>
+  <p>ここに答えが入ります。</p>
+</details>
+>> notes
+- 中の最初の子には、`<summary>` を置きます。
+
+@@ dialog
+tag: <dialog>
+title: ダイアログ
+group: interactive
+summary: ポップアップのような、ダイアログの箱を作る。
+keywords: だいあろぐ ポップアップ モーダル 確認 ウィンドウ
+related: button, details
+>> explain
+`<dialog>` は、確認メッセージのようなダイアログ(小さなウィンドウ)を作ります。`open` 属性を付けると表示された状態になります。
+
+実際に開閉するには、通常JavaScriptを使います(この図鑑では解説しません)。
+>> html
+<dialog open>
+  <p>ここにメッセージが入ります。</p>
+  <form method="dialog">
+    <button>閉じる</button>
+  </form>
+</dialog>
+>> css
+dialog { border: 1px solid #99a; border-radius: 8px; }
+>> notes
+- 初期設定では、`open` がないと表示されません。
+- `<form method="dialog">` のボタンで、ダイアログを閉じられます。
+
+@@ summary
+tag: <summary>
+title: 開閉の見出し
+group: interactive
+summary: `<details>` の中で、常に見えている見出しの部分。
+keywords: さまりー 見出し 開閉 details
+related: details
+>> explain
+`<summary>` は、`<details>` の中の最初の子として置き、常に見えている見出しの部分になります。クリックすると、残りの内容が開閉します。
+>> html
+<details open>
+  <summary>お知らせを見る</summary>
+  <p>開いたときに見える内容です。</p>
+</details>
+>> css
+summary { cursor: pointer; font-weight: bold; }
+>> notes
+- 初期設定では、左側に三角のマークが表示されます。
+
+@@ slot
+tag: <slot>
+title: Web Componentsの差し込み口
+group: components
+summary: Web Componentsで、利用側が内容を差し込む場所を作る。
+keywords: すろっと web components シャドウdom 差し込み
+related: template
+nopreview: Web Components(JavaScriptで定義する部品)の中で使うため、この図鑑では結果を表示しません。
+>> explain
+`<slot>` は、Web Components(自作のHTMLタグ)の中で、利用する側が書いた内容を差し込む場所です。JavaScriptで部品を定義して使うため、通常のページを作るだけなら使いません。
+>> html
+<template id="card">
+  <div class="card">
+    <slot name="title">タイトルなし</slot>
+  </div>
+</template>
+>> notes
+- JavaScriptでの部品の定義は、この図鑑では解説しません。
+
+@@ template
+tag: <template>
+title: 表示しない雛形
+group: components
+summary: すぐには表示せず、あとで使うために置いておくHTMLの雛形。
+keywords: てんぷれーと 雛形 ひな型 テンプレート 複製
+related: slot
+nopreview: 中身は表示されません。JavaScriptで取り出して使います。
+>> explain
+`<template>` の中に書いたHTMLは、ページには表示されません。あとからJavaScriptで複製して使うための雛形として使います。
+>> html
+<template id="row">
+  <tr><td>名前</td><td>値</td></tr>
+</template>
+>> notes
+- 中身は画面に表示されません。使い方にはJavaScriptが必要です(この図鑑では解説しません)。

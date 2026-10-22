@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>独立した記事（article）｜HTML・CSS コード図鑑</title>
+<meta name="description" content="ニュースやブログ記事など、それだけで意味が通じるまとまり。">
+<link rel="canonical" href="https://KtoAQs0zU2f6.github.io/web_html/article/">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../">
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../">HTML・CSS コード図鑑</a>
+    <div class="search">
+      <input id="q" type="search" placeholder="コードを検索(例: 表、ボタン、中央寄せ)" aria-label="コードを検索" autocomplete="off">
+      <ul id="results" class="results" hidden></ul>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <nav class="crumb"><a href="../">トップ</a> › セクション(ページの区分け)</nav>
+  <h1>独立した記事 <code class="tagname">&lt;article&gt;</code></h1>
+  <p class="lead">ニュースやブログ記事など、それだけで意味が通じるまとまり。</p>
+  <p class="meta">HTML要素 ／ セクション(ページの区分け)</p>
+  <p class="badge-unreviewed">この解説は確認前です。内容に誤りがある可能性があります。</p>
+  <section>
+    <h2>何ができるか</h2>
+    <p><code>&lt;article&gt;</code> は、その部分だけを切り出しても意味が通じる、独立したまとまりを表します。ブログ記事、ニュース、コメントなどに使います。</p>
+<p>記事の中に、さらにコメントなどの <code>&lt;article&gt;</code> を入れることもできます。</p>
+  </section>
+  <section><h2>実行結果</h2><iframe class="preview" title="実行結果" sandbox="allow-scripts" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;ja&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;style&gt;body{font-family:sans-serif;margin:12px;line-height:1.6}&lt;/style&gt;&lt;style&gt;article { border: 1px solid #ccd; padding: 12px 16px; border-radius: 8px; }&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;article&gt;
+  &lt;h2&gt;お知らせ&lt;/h2&gt;
+  &lt;p&gt;年末年始の診療についてのご案内です。&lt;/p&gt;
+&lt;/article&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></section>
+  <section>
+    <h2>コード</h2>
+    <div class="codeblock"><div class="bar"><span>HTML</span><button type="button" class="copy" data-target="code-html">コピー</button></div><pre id="code-html"><code>&lt;article&gt;
+  &lt;h2&gt;お知らせ&lt;/h2&gt;
+  &lt;p&gt;年末年始の診療についてのご案内です。&lt;/p&gt;
+&lt;/article&gt;</code></pre></div>
+    <div class="codeblock"><div class="bar"><span>CSS</span><button type="button" class="copy" data-target="code-css">コピー</button></div><pre id="code-css"><code>article { border: 1px solid #ccd; padding: 12px 16px; border-radius: 8px; }</code></pre></div>
+  </section>
+  <section id="playground" class="playground"><h2>試してみる</h2><p>左の欄を書き換えると、右の結果がすぐ変わります。</p><div class="pg-grid"><div class="pg-edit"><label for="pg-html">HTML</label><textarea id="pg-html" spellcheck="false" autocomplete="off">&lt;article&gt;
+  &lt;h2&gt;お知らせ&lt;/h2&gt;
+  &lt;p&gt;年末年始の診療についてのご案内です。&lt;/p&gt;
+&lt;/article&gt;</textarea><label for="pg-css">CSS</label><textarea id="pg-css" spellcheck="false" autocomplete="off">article { border: 1px solid #ccd; padding: 12px 16px; border-radius: 8px; }</textarea><button type="button" id="pg-reset">元に戻す</button></div><div class="pg-out"><iframe id="pg-frame" class="preview" title="試す場所の結果" sandbox="allow-scripts" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;ja&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;style&gt;body{font-family:sans-serif;margin:12px;line-height:1.6}&lt;/style&gt;&lt;style&gt;article { border: 1px solid #ccd; padding: 12px 16px; border-radius: 8px; }&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;article&gt;
+  &lt;h2&gt;お知らせ&lt;/h2&gt;
+  &lt;p&gt;年末年始の診療についてのご案内です。&lt;/p&gt;
+&lt;/article&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div></section>
+  <section><h2>注意点</h2><ul><li>見出しをつけるのが基本です。</li><li>単なる区切りには <code>&lt;div&gt;</code> や <code>&lt;section&gt;</code> を使います。</li></ul></section>
+  <section><h2>関連コード</h2><ul class="related"><li><a href="../section/"><code>&lt;section&gt;</code> 内容の区切り</a></li><li><a href="../aside/"><code>&lt;aside&gt;</code> 補足・脇の情報</a></li><li><a href="../header/"><code>&lt;header&gt;</code> ヘッダー(冒頭)</a></li></ul></section>
+  <p class="mdn">さらに詳しい仕様: <a href="https://developer.mozilla.org/ja/docs/Web/HTML/Reference/Elements/article" rel="noopener">MDN Web Docs</a></p>
+</main>
+<footer class="site-footer"><div class="wrap"><a href="../">HTML・CSS コード図鑑</a></div></footer>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/search.js"></script>
+<script src="../assets/page.js"></script>
+</body>
+</html>

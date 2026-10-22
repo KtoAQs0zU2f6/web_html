@@ -1,0 +1,488 @@
+# 書式: @@ コード名 の次に「項目: 値」、そのあと >> explain / >> html / >> css / >> notes
+# reviewed: yes を足すと「確認前」の表示が消えます。
+
+@@ html
+tag: <html>
+title: HTML文書の根っこ
+group: structure
+summary: HTML文書全体を囲む一番外側の要素。
+keywords: ルート ぶんしょ えいちてぃーえむえる lang 言語 doctype
+related: head, body
+>> explain
+`<html>` は、ページ全体を囲む一番外側のタグです。中には `<head>`(ページの情報)と `<body>`(画面に見える内容)を1つずつ入れます。
+
+`lang="ja"` のように言語を指定しておくと、ブラウザや読み上げソフトがページの言語を正しく判断できます。
+>> html
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>はじめてのページ</title>
+</head>
+<body>
+  <p>こんにちは</p>
+</body>
+</html>
+>> notes
+- 文書の先頭には `<!doctype html>` を書きます。
+- `lang` 属性は、日本語のページなら `ja` にします。
+
+@@ head
+tag: <head>
+title: ページの情報をまとめる
+group: structure
+summary: タイトルや文字コードなど、画面には出ないページ情報を入れる。
+keywords: へっだ ヘッダー meta title 見えない情報
+related: html, title, meta, body
+nopreview: 画面には何も表示されません。中身の効果はタブの文字や検索結果などに現れます。
+>> explain
+`<head>` には、ページのタイトル、文字コード、CSSの読み込みなど、画面には直接表示されない情報を入れます。
+
+ページの見た目の中の「ヘッダー」(上部の帯)は `<header>` という別のタグです。混同しないようにしましょう。
+>> html
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ページのタイトル</title>
+</head>
+>> notes
+- `<head>` と `<header>` は別物です。
+- `<head>` の中に書いた内容は、原則としてページ上には表示されません。
+
+@@ body
+tag: <body>
+title: 画面に見える内容
+group: structure
+summary: ブラウザの画面に表示する内容をすべて入れる。
+keywords: ぼでぃー 本文 表示 背景 余白
+related: html, head
+>> explain
+`<body>` の中に書いた見出し、文章、画像、表などが、ブラウザの画面に表示されます。1つの文書に `<body>` は1つだけです。
+
+CSSで `body` の背景や文字色を指定すると、ページ全体に効きます。
+>> html
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><title>body の例</title></head>
+<body style="background:#eef3ff; margin:0; padding:16px;">
+  <h1>見出し</h1>
+  <p>これは body の中の文章です。</p>
+</body>
+</html>
+>> notes
+- `<body>` はひとつの文書に1つだけです。
+- ブラウザは初期設定で `body` の外側に余白(margin)をつけます。
+
+@@ base
+tag: <base>
+title: リンクの基準URL
+group: metadata
+summary: 相対リンクの基準になるURLをページ全体に指定する。
+keywords: べーす 相対パス 基準 href target
+related: head, link
+nopreview: 画面には何も表示されません。ページ内の相対リンクの行き先が変わります。
+>> explain
+`<base>` で基準のURLを決めると、ページ内の相対リンクや画像のパスは、そのURLを起点に解釈されます。
+
+どのリンクにも効くため、使うと予想外の行き先になることがあります。通常のサイトでは、使わなくても困りません。
+>> html
+<head>
+  <base href="https://example.com/docs/">
+</head>
+>> notes
+- `#section` のようなページ内リンクにも影響します。
+- 1つの文書に `<base>` は1つだけにします。
+
+@@ link
+tag: <link>
+title: 外部ファイルを関連づける
+group: metadata
+summary: CSSファイルやアイコンなど、別ファイルをページに結びつける。
+keywords: りんく stylesheet css 読み込み favicon アイコン rel
+related: style, head
+nopreview: 画面には何も表示されません。読み込んだCSSの効果は、ページの見た目に現れます。
+>> explain
+`<link rel="stylesheet" href="style.css">` と書くと、別ファイルのCSSをページに読み込めます。アイコンや翻訳ページなど、ほかの種類の関連づけにも使います。
+
+`rel` で関係の種類を、`href` で相手のファイルを指定します。
+>> html
+<head>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+>> notes
+- `<link>` は終了タグのない要素です。
+- `<head>` の中に書きます。
+
+@@ meta
+tag: <meta>
+title: ページの付加情報
+group: metadata
+summary: 文字コードや画面幅の設定、ページの説明などを指定する。
+keywords: めた charset viewport description 文字コード スマホ 説明文
+related: head, title
+nopreview: 画面には何も表示されません。文字化け防止やスマホ表示の設定などに使います。
+>> explain
+`<meta>` は、ページに関する情報を指定するタグです。よく使うのは次の3つです。
+
+`charset` は文字コード、`name="viewport"` はスマホでの表示幅、`name="description"` は検索結果などに使われるページの説明です。
+>> html
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ページの説明文です。">
+</head>
+>> notes
+- `charset="utf-8"` は、文書の先頭に近い位置に書きます。
+- スマホ対応のページには `viewport` の指定がほぼ必須です。
+
+@@ style
+tag: <style>
+title: ページ内にCSSを書く
+group: metadata
+summary: HTMLの中に直接CSSを書くためのタグ。
+keywords: すたいる css 装飾 内部スタイル
+related: link, head
+>> explain
+`<style>` の中にCSSを書くと、そのページの見た目を変えられます。CSSファイルを分けない小さなページや、動作の確認に向いています。
+
+複数のページで同じ見た目を使うときは、`<link>` で別ファイルのCSSを読み込むほうが管理しやすくなります。
+>> html
+<style>
+  p { color: crimson; font-weight: bold; }
+</style>
+<p>この文章は赤く太字になります。</p>
+>> notes
+- 通常は `<head>` の中に書きます。
+- ページが増えたら、CSSは別ファイルにまとめる方が直しやすいです。
+
+@@ title
+tag: <title>
+title: ページのタイトル
+group: metadata
+summary: ブラウザのタブや検索結果に表示される、ページの名前。
+keywords: たいとる タブ 検索結果 ブックマーク
+related: head, meta, h1
+nopreview: 画面の中には表示されません。ブラウザのタブや、ブックマーク、検索結果に表示されます。
+>> explain
+`<title>` は、ブラウザのタブ、ブックマーク、検索結果に表示されるページの名前です。1つの文書に必ず1つ必要です。
+
+画面の中の大見出しは `<h1>` で、`<title>` とは別に書きます。
+>> html
+<head>
+  <title>HTML・CSS コード図鑑</title>
+</head>
+>> notes
+- `<title>` は `<head>` の中に書きます。
+- ページごとに違う、内容がわかるタイトルにします。
+
+@@ address
+tag: <address>
+title: 連絡先情報
+group: sectioning
+summary: 記事やページの作成者・運営者の連絡先を示す。
+keywords: あどれす 住所 連絡先 メール 問い合わせ
+related: footer, article
+>> explain
+`<address>` は、その記事やページの作成者・運営者への連絡先を示すためのタグです。メールアドレス、電話番号、住所などを入れます。
+
+どんな住所にでも使えるわけではなく、文書や記事の連絡先に使うものです。
+>> html
+<address>
+  運営:こうほく腎・泌尿器科クリニック<br>
+  <a href="mailto:info@example.com">info@example.com</a>
+</address>
+>> css
+address { font-style: normal; }
+>> notes
+- ブラウザの初期設定では斜体で表示されます。見た目を変えるにはCSSを使います。
+- 本文中の住所を書くだけの用途には向きません。
+
+@@ article
+tag: <article>
+title: 独立した記事
+group: sectioning
+summary: ニュースやブログ記事など、それだけで意味が通じるまとまり。
+keywords: あーてぃくる 記事 ブログ ニュース 投稿
+related: section, aside, header
+>> explain
+`<article>` は、その部分だけを切り出しても意味が通じる、独立したまとまりを表します。ブログ記事、ニュース、コメントなどに使います。
+
+記事の中に、さらにコメントなどの `<article>` を入れることもできます。
+>> html
+<article>
+  <h2>お知らせ</h2>
+  <p>年末年始の診療についてのご案内です。</p>
+</article>
+>> css
+article { border: 1px solid #ccd; padding: 12px 16px; border-radius: 8px; }
+>> notes
+- 見出しをつけるのが基本です。
+- 単なる区切りには `<div>` や `<section>` を使います。
+
+@@ aside
+tag: <aside>
+title: 補足・脇の情報
+group: sectioning
+summary: 本文とは少し離れた補足、広告、関連リンクなどを入れる。
+keywords: あさいど サイドバー 補足 広告 コラム
+related: article, nav
+>> explain
+`<aside>` は、メインの内容とは直接関係が薄い補足的な情報に使います。サイドバー、用語の説明、関連リンクなどが当てはまります。
+
+横に置くことが多いですが、`<aside>` 自体は位置を決めるタグではありません。位置はCSSで決めます。
+>> html
+<p>本文の文章です。</p>
+<aside>
+  <p>補足:この用語の説明です。</p>
+</aside>
+>> css
+aside { background: #f3f5f9; border-left: 4px solid #99a; padding: 8px 12px; }
+>> notes
+- 見た目の位置は関係なく、「補足的な内容かどうか」で選びます。
+
+@@ footer
+tag: <footer>
+title: フッター(末尾)
+group: sectioning
+summary: ページや区切りの末尾に置く、著作権や連絡先などの情報。
+keywords: ふったー 下部 コピーライト 末尾 最後
+related: header, address, main
+>> explain
+`<footer>` は、ページ全体、または記事やセクションの末尾に置く情報をまとめるタグです。著作権表示、関連リンク、作成者の情報などを入れます。
+
+`<body>` 直下に置くとページ全体のフッター、`<article>` の中に置くとその記事のフッターになります。
+>> html
+<footer>
+  <p>&copy; 2026 サンプルクリニック</p>
+</footer>
+>> css
+footer { border-top: 1px solid #ccd; padding: 12px; color: #667; font-size: 14px; }
+>> notes
+- ページの一番下に固定する、という意味ではありません。位置はCSSで決めます。
+
+@@ header
+tag: <header>
+title: ヘッダー(冒頭)
+group: sectioning
+summary: ページや区切りの冒頭にある、見出しやロゴ、案内などをまとめる。
+keywords: へっだー 上部 ロゴ 冒頭 ナビ
+related: footer, nav, h1
+>> explain
+`<header>` は、ページ全体、または記事やセクションの冒頭にある情報をまとめるタグです。ロゴ、見出し、ナビゲーションなどを入れます。
+
+ページの情報を入れる `<head>` とは別のタグです。
+>> html
+<header>
+  <h1>サンプルクリニック</h1>
+  <p>泌尿器科・腎臓内科</p>
+</header>
+>> css
+header { background: #1f4fb0; color: #fff; padding: 12px 16px; }
+header h1 { margin: 0; font-size: 20px; }
+header p { margin: 0; }
+>> notes
+- `<head>` との混同に注意します。
+
+@@ h1
+tag: <h1>
+title: 見出し(レベル1)
+group: sectioning
+summary: ページで最も大きな見出し。内容の題名に使う。
+keywords: えいちわん 見出し 大見出し タイトル 題名
+related: h2, title, header
+>> explain
+`<h1>` は一番大きな見出しで、ページの題名を表します。文書の構造を伝える役割があるので、文字を大きくするためだけには使いません。
+
+見出しは `<h1>` から `<h6>` まであり、数字が小さいほど上の階層です。
+>> html
+<h1>ページの題名</h1>
+<h2>大きな区切り</h2>
+<p>本文です。</p>
+>> notes
+- 見出しの階層は飛ばさず、順番に使います(`<h1>` の次は `<h2>`)。
+- 文字の大きさだけを変えたいときはCSSを使います。
+
+@@ h2
+tag: <h2>
+title: 見出し(レベル2)
+group: sectioning
+summary: `<h1>` の下の、大きな区切りの見出し。
+keywords: えいちつー 見出し 中見出し
+related: h1, h3
+>> explain
+`<h2>` は、`<h1>` の下にくる大きな区切りの見出しです。章のタイトルにあたります。
+>> html
+<h1>診療案内</h1>
+<h2>診療時間</h2>
+<p>平日 9:00〜18:00</p>
+>> notes
+- `<h1>` を飛ばして、いきなり `<h2>` から始めない方が構造が伝わりやすいです。
+
+@@ h3
+tag: <h3>
+title: 見出し(レベル3)
+group: sectioning
+summary: `<h2>` の下の、さらに細かい区切りの見出し。
+keywords: えいちすりー 見出し 小見出し
+related: h2, h4
+>> explain
+`<h3>` は、`<h2>` の中をさらに分けるときの見出しです。節のタイトルにあたります。
+>> html
+<h2>診療案内</h2>
+<h3>泌尿器科</h3>
+<p>排尿の悩みなどを診察します。</p>
+>> notes
+- 見出しの階層は、内容の入れ子の深さに合わせます。
+
+@@ h4
+tag: <h4>
+title: 見出し(レベル4)
+group: sectioning
+summary: `<h3>` の中を分ける、細かい見出し。
+keywords: えいちふぉー 見出し
+related: h3, h5
+>> explain
+`<h4>` は、`<h3>` の中をさらに分けるときに使う見出しです。階層が深くなりすぎるなら、ページの分け方を見直す目安にもなります。
+>> html
+<h3>泌尿器科</h3>
+<h4>初診の流れ</h4>
+<p>受付で問診票を記入します。</p>
+>> notes
+- 初期設定では、`<h4>` は本文とほぼ同じ大きさで太字になります。
+
+@@ h5
+tag: <h5>
+title: 見出し(レベル5)
+group: sectioning
+summary: `<h4>` の中を分ける、さらに細かい見出し。
+keywords: えいちふぁいぶ 見出し
+related: h4, h6
+>> explain
+`<h5>` は、`<h4>` の下の階層に使う見出しです。使う機会は多くありません。
+>> html
+<h4>初診の流れ</h4>
+<h5>持ち物</h5>
+<p>保険証をお持ちください。</p>
+>> notes
+- 初期設定では、本文より小さい文字で表示されます。
+
+@@ h6
+tag: <h6>
+title: 見出し(レベル6)
+group: sectioning
+summary: 最も小さい見出し。階層の一番下。
+keywords: えいちしっくす 見出し
+related: h5, h1
+>> explain
+`<h6>` は、見出しの中で一番下の階層です。HTMLの見出しは `<h6>` までで、それ以上はありません。
+>> html
+<h5>持ち物</h5>
+<h6>補足</h6>
+<p>お薬手帳があればご持参ください。</p>
+>> notes
+- ここまで深い階層が必要なら、ページを分けることも考えます。
+
+@@ hgroup
+tag: <hgroup>
+title: 見出しと副題のグループ
+group: sectioning
+summary: 見出しとサブタイトルなどを、ひとまとまりにする。
+keywords: えいちぐるーぷ 見出し 副題 サブタイトル
+related: h1, header
+>> explain
+`<hgroup>` は、見出しとそれに付く副題・キャッチコピーなどを、ひとまとまりにするタグです。中には見出しと、`<p>` を入れます。
+>> html
+<hgroup>
+  <h1>HTML・CSS コード図鑑</h1>
+  <p>目的から探して、その場で試せる</p>
+</hgroup>
+>> notes
+- 中には見出しタグと `<p>` を入れます。
+
+@@ main
+tag: <main>
+title: ページの主な内容
+group: sectioning
+summary: そのページの中心となる内容を囲む。ページに1つだけ置く。
+keywords: めいん 本文 主要 メインコンテンツ
+related: header, footer, nav
+>> explain
+`<main>` は、そのページの中心となる内容を囲みます。ヘッダー、ナビゲーション、フッターなど、ページ共通の部分は含めません。
+
+スクリーンリーダーなどが「本文へ移動」するための目印にもなります。
+>> html
+<header>ヘッダー</header>
+<main>
+  <h1>このページの主題</h1>
+  <p>ここにページの主な内容が入ります。</p>
+</main>
+<footer>フッター</footer>
+>> notes
+- 1つのページに、表示される `<main>` は1つだけにします。
+- `<article>` や `<aside>` の中には入れません。
+
+@@ nav
+tag: <nav>
+title: ナビゲーション
+group: sectioning
+summary: サイト内の主要なリンク(メニュー)をまとめる。
+keywords: なび ナビゲーション メニュー リンク集 目次
+related: ul, a, header
+>> explain
+`<nav>` は、サイト内を移動するための主要なリンクのまとまりを示します。グローバルメニューや目次などに使います。
+
+リンクを並べるときは、中に `<ul>` を使うことが多いです。
+>> html
+<nav>
+  <ul>
+    <li><a href="#top">トップ</a></li>
+    <li><a href="#info">診療案内</a></li>
+    <li><a href="#access">アクセス</a></li>
+  </ul>
+</nav>
+>> css
+nav ul { display: flex; gap: 16px; list-style: none; padding: 0; }
+>> notes
+- ページ内のすべてのリンク集に使うわけではなく、主要なメニューに使います。
+
+@@ section
+tag: <section>
+title: 内容の区切り
+group: sectioning
+summary: 見出しを持つ、内容上のひとまとまりの区切り。
+keywords: せくしょん 章 節 区切り
+related: article, div, h2
+>> explain
+`<section>` は、テーマごとに分けた、内容上のひとまとまりを示します。基本的に、中に見出しを置きます。
+
+見た目をまとめるためだけに囲みたいときは、`<div>` を使います。
+>> html
+<section>
+  <h2>診療時間</h2>
+  <p>平日 9:00〜18:00</p>
+</section>
+>> notes
+- 見出しがない区切りは `<div>` の方が向いています。
+
+@@ search
+tag: <search>
+title: 検索の領域
+group: sectioning
+summary: 検索や絞り込みのための部品(フォームなど)を囲む。
+keywords: さーち 検索 絞り込み フィルター
+related: form, input
+>> explain
+`<search>` は、検索や絞り込みの機能を持つ部分を囲むタグです。中には、検索のためのフォームなどを入れます。
+
+検索結果そのものではなく、検索のための入力欄まわりを囲みます。
+>> html
+<search>
+  <form action="/search">
+    <label for="kw">キーワード</label>
+    <input id="kw" type="search" name="q">
+    <button type="submit">検索</button>
+  </form>
+</search>
+>> notes
+- 比較的新しい要素です。古いブラウザでは扱われないことがあります(その場合も中身は表示されます)。

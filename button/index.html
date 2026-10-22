@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ボタン（button）｜HTML・CSS コード図鑑</title>
+<meta name="description" content="クリックできるボタンを作る。送信や、操作の開始に使う。">
+<link rel="canonical" href="https://KtoAQs0zU2f6.github.io/web_html/button/">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../">
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../">HTML・CSS コード図鑑</a>
+    <div class="search">
+      <input id="q" type="search" placeholder="コードを検索(例: 表、ボタン、中央寄せ)" aria-label="コードを検索" autocomplete="off">
+      <ul id="results" class="results" hidden></ul>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <nav class="crumb"><a href="../">トップ</a> › フォーム</nav>
+  <h1>ボタン <code class="tagname">&lt;button&gt;</code></h1>
+  <p class="lead">クリックできるボタンを作る。送信や、操作の開始に使う。</p>
+  <p class="meta">HTML要素 ／ フォーム</p>
+  <p class="badge-unreviewed">この解説は確認前です。内容に誤りがある可能性があります。</p>
+  <section>
+    <h2>何ができるか</h2>
+    <p><code>&lt;button&gt;</code> は、クリックできるボタンです。フォームの中では、<code>type=&quot;submit&quot;</code> で送信ボタンに、<code>type=&quot;button&quot;</code> でただのボタンになります。</p>
+<p>ボタンの中には、文字だけでなく画像なども入れられます。</p>
+  </section>
+  <section><h2>実行結果</h2><iframe class="preview" title="実行結果" sandbox="allow-scripts" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;ja&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;style&gt;body{font-family:sans-serif;margin:12px;line-height:1.6}&lt;/style&gt;&lt;style&gt;button { padding: 8px 18px; border: 0; border-radius: 6px; background: #1f4fb0; color: #fff; font-size: 16px; cursor: pointer; }
+button:hover { background: #163a85; }&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;button type=&quot;button&quot;&gt;ボタン&lt;/button&gt;
+&lt;button type=&quot;submit&quot;&gt;送信&lt;/button&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></section>
+  <section>
+    <h2>コード</h2>
+    <div class="codeblock"><div class="bar"><span>HTML</span><button type="button" class="copy" data-target="code-html">コピー</button></div><pre id="code-html"><code>&lt;button type=&quot;button&quot;&gt;ボタン&lt;/button&gt;
+&lt;button type=&quot;submit&quot;&gt;送信&lt;/button&gt;</code></pre></div>
+    <div class="codeblock"><div class="bar"><span>CSS</span><button type="button" class="copy" data-target="code-css">コピー</button></div><pre id="code-css"><code>button { padding: 8px 18px; border: 0; border-radius: 6px; background: #1f4fb0; color: #fff; font-size: 16px; cursor: pointer; }
+button:hover { background: #163a85; }</code></pre></div>
+  </section>
+  <section id="playground" class="playground"><h2>試してみる</h2><p>左の欄を書き換えると、右の結果がすぐ変わります。</p><div class="pg-grid"><div class="pg-edit"><label for="pg-html">HTML</label><textarea id="pg-html" spellcheck="false" autocomplete="off">&lt;button type=&quot;button&quot;&gt;ボタン&lt;/button&gt;
+&lt;button type=&quot;submit&quot;&gt;送信&lt;/button&gt;</textarea><label for="pg-css">CSS</label><textarea id="pg-css" spellcheck="false" autocomplete="off">button { padding: 8px 18px; border: 0; border-radius: 6px; background: #1f4fb0; color: #fff; font-size: 16px; cursor: pointer; }
+button:hover { background: #163a85; }</textarea><button type="button" id="pg-reset">元に戻す</button></div><div class="pg-out"><iframe id="pg-frame" class="preview" title="試す場所の結果" sandbox="allow-scripts" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;ja&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;style&gt;body{font-family:sans-serif;margin:12px;line-height:1.6}&lt;/style&gt;&lt;style&gt;button { padding: 8px 18px; border: 0; border-radius: 6px; background: #1f4fb0; color: #fff; font-size: 16px; cursor: pointer; }
+button:hover { background: #163a85; }&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;button type=&quot;button&quot;&gt;ボタン&lt;/button&gt;
+&lt;button type=&quot;submit&quot;&gt;送信&lt;/button&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div></section>
+  <section><h2>注意点</h2><ul><li>フォームの中の <code>&lt;button&gt;</code> は、<code>type</code> を省略すると送信ボタンになります。送信させたくないときは <code>type=&quot;button&quot;</code> を書きます。</li><li>移動するだけなら、リンク(<code>&lt;a&gt;</code>)を使います。</li></ul></section>
+  <section><h2>関連コード</h2><ul class="related"><li><a href="../input/"><code>&lt;input&gt;</code> 入力欄</a></li><li><a href="../form/"><code>&lt;form&gt;</code> フォーム</a></li><li><a href="../a/"><code>&lt;a&gt;</code> リンク</a></li></ul></section>
+  <p class="mdn">さらに詳しい仕様: <a href="https://developer.mozilla.org/ja/docs/Web/HTML/Reference/Elements/button" rel="noopener">MDN Web Docs</a></p>
+</main>
+<footer class="site-footer"><div class="wrap"><a href="../">HTML・CSS コード図鑑</a></div></footer>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/search.js"></script>
+<script src="../assets/page.js"></script>
+</body>
+</html>

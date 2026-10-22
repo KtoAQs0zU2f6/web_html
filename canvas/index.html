@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>描画領域（canvas）｜HTML・CSS コード図鑑</title>
+<meta name="description" content="JavaScriptで図形やグラフィックを描くための領域。">
+<link rel="canonical" href="https://KtoAQs0zU2f6.github.io/web_html/canvas/">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../">
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../">HTML・CSS コード図鑑</a>
+    <div class="search">
+      <input id="q" type="search" placeholder="コードを検索(例: 表、ボタン、中央寄せ)" aria-label="コードを検索" autocomplete="off">
+      <ul id="results" class="results" hidden></ul>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <nav class="crumb"><a href="../">トップ</a> › スクリプト・描画</nav>
+  <h1>描画領域 <code class="tagname">&lt;canvas&gt;</code></h1>
+  <p class="lead">JavaScriptで図形やグラフィックを描くための領域。</p>
+  <p class="meta">HTML要素 ／ スクリプト・描画</p>
+  <p class="badge-unreviewed">この解説は確認前です。内容に誤りがある可能性があります。</p>
+  <section>
+    <h2>何ができるか</h2>
+    <p><code>&lt;canvas&gt;</code> は、JavaScriptで線や図形を描くための白紙の領域です。HTMLのタグだけでは何も描かれず、描画はスクリプトで行います。</p>
+<p>下の例では、スクリプトで四角を1つ描いています。JavaScriptの書き方は、この図鑑では解説しません。</p>
+  </section>
+  <section><h2>実行結果</h2><iframe class="preview" title="実行結果" sandbox="allow-scripts" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;ja&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;style&gt;body{font-family:sans-serif;margin:12px;line-height:1.6}&lt;/style&gt;&lt;style&gt;&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;canvas id=&quot;c&quot; width=&quot;200&quot; height=&quot;100&quot; style=&quot;border:1px solid #99a&quot;&gt;&lt;/canvas&gt;
+&lt;script&gt;
+  var ctx = document.getElementById(&quot;c&quot;).getContext(&quot;2d&quot;);
+  ctx.fillStyle = &quot;#5b7bd5&quot;;
+  ctx.fillRect(20, 20, 80, 50);
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></section>
+  <section>
+    <h2>コード</h2>
+    <div class="codeblock"><div class="bar"><span>HTML</span><button type="button" class="copy" data-target="code-html">コピー</button></div><pre id="code-html"><code>&lt;canvas id=&quot;c&quot; width=&quot;200&quot; height=&quot;100&quot; style=&quot;border:1px solid #99a&quot;&gt;&lt;/canvas&gt;
+&lt;script&gt;
+  var ctx = document.getElementById(&quot;c&quot;).getContext(&quot;2d&quot;);
+  ctx.fillStyle = &quot;#5b7bd5&quot;;
+  ctx.fillRect(20, 20, 80, 50);
+&lt;/script&gt;</code></pre></div>
+    
+  </section>
+  <section id="playground" class="playground"><h2>試してみる</h2><p>左の欄を書き換えると、右の結果がすぐ変わります。</p><div class="pg-grid"><div class="pg-edit"><label for="pg-html">HTML</label><textarea id="pg-html" spellcheck="false" autocomplete="off">&lt;canvas id=&quot;c&quot; width=&quot;200&quot; height=&quot;100&quot; style=&quot;border:1px solid #99a&quot;&gt;&lt;/canvas&gt;
+&lt;script&gt;
+  var ctx = document.getElementById(&quot;c&quot;).getContext(&quot;2d&quot;);
+  ctx.fillStyle = &quot;#5b7bd5&quot;;
+  ctx.fillRect(20, 20, 80, 50);
+&lt;/script&gt;</textarea><label for="pg-css">CSS</label><textarea id="pg-css" spellcheck="false" autocomplete="off"></textarea><button type="button" id="pg-reset">元に戻す</button></div><div class="pg-out"><iframe id="pg-frame" class="preview" title="試す場所の結果" sandbox="allow-scripts" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;ja&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;style&gt;body{font-family:sans-serif;margin:12px;line-height:1.6}&lt;/style&gt;&lt;style&gt;&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;canvas id=&quot;c&quot; width=&quot;200&quot; height=&quot;100&quot; style=&quot;border:1px solid #99a&quot;&gt;&lt;/canvas&gt;
+&lt;script&gt;
+  var ctx = document.getElementById(&quot;c&quot;).getContext(&quot;2d&quot;);
+  ctx.fillStyle = &quot;#5b7bd5&quot;;
+  ctx.fillRect(20, 20, 80, 50);
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div></section>
+  <section><h2>注意点</h2><ul><li><code>width</code> と <code>height</code> はHTMLの属性で指定します。CSSで大きさを変えると、絵が引き伸ばされます。</li></ul></section>
+  <section><h2>関連コード</h2><ul class="related"><li><a href="../svg/"><code>&lt;svg&gt;</code> ベクター図形</a></li><li><a href="../script/"><code>&lt;script&gt;</code> JavaScriptを実行する</a></li></ul></section>
+  <p class="mdn">さらに詳しい仕様: <a href="https://developer.mozilla.org/ja/docs/Web/HTML/Reference/Elements/canvas" rel="noopener">MDN Web Docs</a></p>
+</main>
+<footer class="site-footer"><div class="wrap"><a href="../">HTML・CSS コード図鑑</a></div></footer>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/search.js"></script>
+<script src="../assets/page.js"></script>
+</body>
+</html>

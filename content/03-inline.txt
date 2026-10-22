@@ -1,0 +1,450 @@
+@@ a
+tag: <a>
+title: リンク
+group: inline
+summary: 別のページや場所へ移動するリンクを作る。
+keywords: えー りんく アンカー href url 飛ぶ ハイパーリンク
+related: nav, img, button
+>> explain
+`<a>` は、クリックすると別のページやページ内の場所に移動するリンクを作ります。行き先は `href` 属性で指定します。
+
+`target="_blank"` を付けると新しいタブで開きます。このとき `rel="noopener"` も付けておくと安全です。
+>> html
+<p><a href="https://example.com/">外部サイトへのリンク</a></p>
+<p><a href="#bottom">ページ内のリンク</a></p>
+>> css
+a { color: #1f4fb0; }
+a:hover { text-decoration: none; }
+>> notes
+- リンクの文字は「こちら」ではなく、行き先がわかる言葉にします。
+- 画面内の枠では、リンクを押すと移動先が枠の中に表示されることがあります。
+
+@@ abbr
+tag: <abbr>
+title: 略語
+group: inline
+summary: 略語を示し、`title` で正式名称を添える。
+keywords: あぶりびえーしょん 略語 略称 省略
+related: dfn
+>> explain
+`<abbr>` は略語や略称を示します。`title` 属性に正式な名前を書くと、マウスを乗せたときに表示されます。
+>> html
+<p><abbr title="HyperText Markup Language">HTML</abbr> はウェブページを作る言語です。</p>
+>> css
+abbr[title] { text-decoration: underline dotted; }
+>> notes
+- スマホではマウスを乗せられないため、`title` の内容が見られない場合があります。
+
+@@ b
+tag: <b>
+title: 目立たせる文字
+group: inline
+summary: 意味の強調ではなく、目立たせたい語を太字にする。
+keywords: びー 太字 ボールド 強調 キーワード
+related: strong, em, mark
+>> explain
+`<b>` は、文章の中で目立たせたい語(製品名やキーワードなど)に使います。太字で表示されますが、重要度の意味はもちません。
+
+重要な内容には `<strong>` を使います。
+>> html
+<p>この薬は <b>ビタミン剤</b> として使われます。</p>
+>> notes
+- 太字にするだけが目的なら、CSSの `font-weight` も使えます。
+
+@@ bdi
+tag: <bdi>
+title: 文字方向の分離
+group: inline
+summary: 書く向きが不明な文字を、周りと独立して扱う。
+keywords: びーでぃーあい 双方向 文字方向 右から左 アラビア語
+related: bdo
+>> explain
+`<bdi>` は、ユーザー名のように、文字の書く向き(左から右か、右から左か)が前もってわからない文字を囲みます。周りの文字の向きに影響されずに表示されます。
+
+日本語だけのページで使う機会は多くありません。
+>> html
+<ul>
+  <li>ユーザー: <bdi>田中</bdi> — 12点</li>
+  <li>ユーザー: <bdi>إيان</bdi> — 5点</li>
+</ul>
+>> notes
+- 右から左へ書く言語(アラビア語など)を扱うときに役立ちます。
+
+@@ bdo
+tag: <bdo>
+title: 文字方向の上書き
+group: inline
+summary: 文字の書く向きを、指定した向きに強制する。
+keywords: びーでぃーおー 文字方向 逆向き dir rtl
+related: bdi
+>> explain
+`<bdo>` は、文字の書く向きを `dir` 属性で強制的に決めます。`dir="rtl"` なら右から左、`dir="ltr"` なら左から右になります。
+>> html
+<p><bdo dir="rtl">abc 123</bdo></p>
+>> notes
+- `dir` 属性は必ず指定します。
+
+@@ br
+tag: <br>
+title: 改行
+group: inline
+summary: 文章の途中で改行する。終了タグはない。
+keywords: ぶーあーる 改行 かいぎょう 折り返し
+related: p, wbr
+>> explain
+`<br>` は、その場所で改行するタグです。住所や詩のように、改行そのものに意味がある文章に使います。
+
+段落を分けたいときは、改行を重ねずに `<p>` を使います。
+>> html
+<p>埼玉県鴻巣市<br>サンプル町1-2-3</p>
+>> notes
+- 行間をあけるために `<br>` を重ねるのは避け、CSSの余白を使います。
+
+@@ cite
+tag: <cite>
+title: 作品の題名
+group: inline
+summary: 本・記事・映画などの作品名や出典を示す。
+keywords: さいと 出典 作品名 引用元 書名
+related: blockquote, q
+>> explain
+`<cite>` は、引用した作品の題名(本、記事、論文、映画など)を示します。ブラウザでは初期設定で斜体になります。
+>> html
+<p>詳しくは <cite>HTML入門書</cite> を参照してください。</p>
+>> notes
+- 人の名前には使わず、作品の題名に使います。
+
+@@ code
+tag: <code>
+title: コードの文字列
+group: inline
+summary: プログラムのコードやタグ名など、コードを表す文字。
+keywords: こーど ソースコード 等幅 プログラム
+related: pre, kbd, samp
+>> explain
+`<code>` は、文中に出てくるコードの断片を表します。等幅フォントで表示されます。
+
+複数行のコードは、`<pre>` と組み合わせます。
+>> html
+<p>段落は <code>&lt;p&gt;</code> タグで書きます。</p>
+>> css
+code { background: #f1f3f8; padding: .1em .35em; border-radius: 4px; }
+>> notes
+- `<` と `>` を表示するには、`&lt;` と `&gt;` と書きます。
+
+@@ data
+tag: <data>
+title: 機械が読める値
+group: inline
+summary: 画面に表示する文字に、機械が読むための値を添える。
+keywords: でーた value 値 商品コード
+related: time
+>> explain
+`<data>` は、見える文字に、機械が読むための値を `value` 属性で添えます。商品名と商品コードを結びつける場合などに使います。
+>> html
+<ul>
+  <li><data value="4901234567890">りんごジュース</data></li>
+</ul>
+>> notes
+- 日付や時刻には、専用の `<time>` を使います。
+
+@@ dfn
+tag: <dfn>
+title: 用語の定義
+group: inline
+summary: ここで初めて定義する用語であることを示す。
+keywords: でぃーえふえぬ 定義 用語 初出
+related: abbr
+>> explain
+`<dfn>` は、文章の中で、その用語を定義している箇所を示します。用語が初めて説明される場所に使います。
+>> html
+<p><dfn>HTML</dfn> とは、ウェブページの構造を表す言語のことです。</p>
+>> notes
+- 初期設定では斜体で表示されます。
+
+@@ em
+tag: <em>
+title: 強調
+group: inline
+summary: 文の意味を強めたい語を強調する。初期設定では斜体。
+keywords: えむ 強調 エンファシス 斜体
+related: strong, i
+>> explain
+`<em>` は、声に出して読むときに強く読むような、文の意味合いを変える強調に使います。初期設定では斜体で表示されます。
+
+注意を促す重要な内容には `<strong>` を使います。
+>> html
+<p>この薬は <em>食後に</em> 飲んでください。</p>
+>> notes
+- 斜体にするだけが目的なら、CSSの `font-style` を使います。
+
+@@ i
+tag: <i>
+title: 別の調子の文字
+group: inline
+summary: 専門用語や外国語など、周りと調子が違う文字。斜体になる。
+keywords: あい 斜体 イタリック 学名 外来語
+related: em, cite
+>> explain
+`<i>` は、専門用語、学名、外国語、心の声など、普通の文章と調子が違う語に使います。初期設定では斜体で表示されます。
+>> html
+<p>大腸菌(<i>Escherichia coli</i>)は腸内に常在します。</p>
+>> notes
+- 意味の強調には `<em>` を使います。
+
+@@ kbd
+tag: <kbd>
+title: キーボード入力
+group: inline
+summary: ユーザーがキーボードで入力する内容を示す。
+keywords: けーびーでぃー キー ショートカット 入力 キーボード
+related: code, samp
+>> explain
+`<kbd>` は、ユーザーがキーボードなどで入力する内容を示します。ショートカットキーの説明などに使います。
+>> html
+<p>コピーは <kbd>Ctrl</kbd> + <kbd>C</kbd> です。</p>
+>> css
+kbd { border: 1px solid #aab; border-radius: 4px; padding: 0 .4em; background: #f6f7fb; }
+>> notes
+- 初期設定では等幅フォントで表示されます。
+
+@@ mark
+tag: <mark>
+title: マーカー(ハイライト)
+group: inline
+summary: 検索語などを、蛍光ペンのように目立たせる。
+keywords: まーく ハイライト 蛍光ペン マーカー 強調
+related: strong, em
+>> explain
+`<mark>` は、文章の中で、蛍光ペンを引いたように目立たせる語を示します。検索結果の中でキーワードを目立たせるときなどに使います。
+>> html
+<p>この文章の中の <mark>重要な語</mark> だけを目立たせます。</p>
+>> css
+mark { background: #ffe58a; }
+>> notes
+- 初期設定では黄色の背景になります。
+
+@@ q
+tag: <q>
+title: 短い引用
+group: inline
+summary: 文中に入れる短い引用。ブラウザが引用符をつける。
+keywords: きゅー 引用 かぎかっこ クォート
+related: blockquote, cite
+>> explain
+`<q>` は、文の途中に入れる短い引用です。ブラウザが引用符を自動でつけるため、自分で書く必要はありません。
+
+長い引用は `<blockquote>` を使います。
+>> html
+<p>彼は <q>明日までに送ります</q> と言いました。</p>
+>> notes
+- 引用符の種類は、`lang` 属性で変わることがあります。
+
+@@ rp
+tag: <rp>
+title: ルビ非対応用の括弧
+group: inline
+summary: ルビに対応しないブラウザ用の、読みを囲む括弧。
+keywords: あーるぴー ルビ ふりがな 括弧
+related: ruby, rt
+>> explain
+`<rp>` は、ルビに対応していない環境で、読みを括弧つきで表示するためのタグです。ルビに対応している環境では表示されません。
+>> html
+<ruby>漢字<rp>(</rp><rt>かんじ</rt><rp>)</rp></ruby>
+>> notes
+- `<ruby>` の中で、`<rt>` の前後に置きます。
+
+@@ rt
+tag: <rt>
+title: ルビの読み
+group: inline
+summary: ルビ(ふりがな)の読みの部分。
+keywords: あーるてぃー ルビ ふりがな 読み
+related: ruby, rp
+>> explain
+`<rt>` は、`<ruby>` の中で、漢字の上に表示する読みの文字(ふりがな)を示します。
+>> html
+<ruby>鴻巣<rt>こうのす</rt></ruby>市
+>> notes
+- `<ruby>` の中で使います。
+
+@@ ruby
+tag: <ruby>
+title: ルビ(ふりがな)
+group: inline
+summary: 漢字などの上に、読みを小さく表示する。
+keywords: るび ふりがな 読み仮名 振り仮名
+related: rt, rp
+>> explain
+`<ruby>` は、漢字の読み(ふりがな)をつけるためのタグです。ふりがなの文字は `<rt>` で、ルビ非対応の環境向けの括弧は `<rp>` で書きます。
+>> html
+<p><ruby>泌尿器科<rp>(</rp><rt>ひにょうきか</rt><rp>)</rp></ruby>の診察です。</p>
+>> css
+rt { font-size: 60%; }
+>> notes
+- 長い言葉の途中でふりがなを切り替えたいときは、`<ruby>` の中に複数の組を書けます。
+
+@@ s
+tag: <s>
+title: 取り消し線
+group: inline
+summary: 今は正しくない内容を、取り消し線で示す。
+keywords: えす 取り消し線 打ち消し 旧価格
+related: del, ins
+>> explain
+`<s>` は、もう正しくない、または有効でない内容に取り消し線を引きます。値下げ前の価格などに使います。
+
+文書の修正履歴を示すときは、`<del>` と `<ins>` を使います。
+>> html
+<p>価格: <s>3,000円</s> 2,000円</p>
+>> notes
+- 単に線を引きたいだけなら、CSSの `text-decoration` を使います。
+
+@@ samp
+tag: <samp>
+title: 出力の例
+group: inline
+summary: プログラムが出力する結果の例を示す。
+keywords: さんぷ 出力 実行結果 サンプル エラー表示
+related: code, kbd
+>> explain
+`<samp>` は、プログラムやシステムが出力した結果の例(エラーメッセージなど)を示します。等幅フォントで表示されます。
+>> html
+<p>実行すると <samp>Hello, world!</samp> と表示されます。</p>
+>> notes
+- コードそのものは `<code>`、入力は `<kbd>` を使います。
+
+@@ small
+tag: <small>
+title: 補足の小さな文字
+group: inline
+summary: 注意書き、著作権表示など、補足的な小さい文字。
+keywords: すもーる 注釈 注意書き 著作権 小さい文字
+related: footer
+>> explain
+`<small>` は、注意書き、著作権表示、免責のような、補足的な内容を示します。ブラウザでは文字が小さく表示されます。
+>> html
+<p>送料無料 <small>(一部地域を除く)</small></p>
+>> notes
+- 単に文字を小さくしたいだけなら、CSSの `font-size` を使います。
+
+@@ span
+tag: <span>
+title: 意味を持たない文字の囲み
+group: inline
+summary: 文中の一部に、意味を足さずにCSSを当てるための囲み。
+keywords: すぱん 部分 装飾 インライン
+related: div, strong
+>> explain
+`<span>` は、意味を持たない汎用のインライン要素です。文章の一部だけにCSSで色やサイズを当てるときに使います。
+
+ブロックのまとまりには `<div>` を使います。
+>> html
+<p>この中の <span class="hl">一部だけ</span> に色がつきます。</p>
+>> css
+.hl { color: #c0392b; font-weight: bold; }
+>> notes
+- `<span>` は、改行を入れずに文の流れの中に置かれます。
+
+@@ strong
+tag: <strong>
+title: 重要な強調
+group: inline
+summary: 重要性・注意・緊急性が高い内容を強調する。太字になる。
+keywords: すとろんぐ 重要 注意 太字 強調
+related: em, b
+>> explain
+`<strong>` は、重要な内容や注意事項を示します。初期設定では太字で表示されます。
+>> html
+<p><strong>注意:</strong> 食前には飲まないでください。</p>
+>> notes
+- 見た目を太くするだけなら `<b>` やCSSでも可能ですが、`<strong>` は「重要」という意味をもちます。
+
+@@ sub
+tag: <sub>
+title: 下付き文字
+group: inline
+summary: 化学式や添え字のように、文字を下に小さく表示する。
+keywords: さぶ 下付き 添え字 化学式 H2O
+related: sup
+>> explain
+`<sub>` は、文字を少し下げて小さく表示します。化学式や数式の添え字に使います。
+>> html
+<p>水の化学式は H<sub>2</sub>O です。</p>
+>> notes
+- 行の高さが乱れることがあります。気になる場合は `line-height` で調整します。
+
+@@ sup
+tag: <sup>
+title: 上付き文字
+group: inline
+summary: 累乗や注釈番号のように、文字を上に小さく表示する。
+keywords: さっぷ 上付き 累乗 べき乗 注釈
+related: sub
+>> explain
+`<sup>` は、文字を少し上げて小さく表示します。累乗(2の3乗など)や注釈の番号に使います。
+>> html
+<p>2<sup>3</sup> = 8</p>
+<p>詳しくは注<sup>1</sup>を参照。</p>
+>> notes
+- 行の高さが乱れることがあります。気になる場合は `line-height` で調整します。
+
+@@ time
+tag: <time>
+title: 日付・時刻
+group: inline
+summary: 日付や時刻を、機械が読める形式で示す。
+keywords: たいむ 日付 時刻 日時 datetime
+related: data
+>> explain
+`<time>` は、日付や時刻を示すタグです。`datetime` 属性に、決まった形式(`2026-10-22` など)で書くと、検索エンジンやソフトが日付として理解できます。
+>> html
+<p>公開日: <time datetime="2026-10-22">2026年10月22日</time></p>
+>> notes
+- 見える文字は自由に書けますが、`datetime` の書式は決まっています。
+
+@@ u
+tag: <u>
+title: 下線(注釈つきの文字)
+group: inline
+summary: 文字に下線を引く。誤字の指摘や固有名の印などに使う。
+keywords: ゆー 下線 アンダーライン 誤字
+related: a, mark
+>> explain
+`<u>` は、文字の下に線を引くタグです。誤字の指摘や、中国語の固有名の印のように、下線自体に意味があるときに使います。
+
+リンクと見分けがつかなくなるため、飾りとしての下線はあまりおすすめしません。
+>> html
+<p>これは <u>まちがった</u> 言葉の例です。</p>
+>> notes
+- 下線だけがほしいなら、CSSの `text-decoration: underline` を使います。
+
+@@ var
+tag: <var>
+title: 変数・文字の名前
+group: inline
+summary: 数式やプログラムの変数など、文字で表す変数を示す。
+keywords: ばー 変数 数式 パラメータ
+related: code
+>> explain
+`<var>` は、数式やプログラムに出てくる変数の名前を示します。ブラウザでは初期設定で斜体になります。
+>> html
+<p>面積 <var>S</var> は、縦 <var>a</var> と横 <var>b</var> の積です。</p>
+>> notes
+- コードの断片には `<code>` を使います。
+
+@@ wbr
+tag: <wbr>
+title: 改行してよい位置
+group: inline
+summary: 長い文字列の中で、必要なら改行してよい位置を示す。
+keywords: だぶりゅーびーあーる 折り返し 長い単語 URL 改行位置
+related: br
+>> explain
+`<wbr>` は、長い単語やURLの中で、「幅が足りないときはここで折り返してよい」という位置を示します。幅に余裕があれば改行されません。
+>> html
+<p style="width:140px; border:1px solid #99a">
+  www.example<wbr>.com/very<wbr>/long<wbr>/path
+</p>
+>> notes
+- 常に改行する `<br>` とは違います。

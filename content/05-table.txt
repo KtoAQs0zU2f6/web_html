@@ -1,0 +1,242 @@
+@@ table
+tag: <table>
+title: 表
+group: table
+summary: 行と列に並べたデータを、表として表示する。
+keywords: てーぶる ひょう 表組み 行 列 グリッド データ
+related: tr, th, td, caption, thead
+>> explain
+`<table>` は、行と列でデータを整理する表を作ります。1行は `<tr>`、見出しのセルは `<th>`、データのセルは `<td>` で書きます。
+
+表は、データの一覧など「表の形をしている情報」に使います。ページ全体の配置には、CSSのレイアウトを使います。
+>> html
+<table>
+  <tr>
+    <th>名前</th>
+    <th>診療科</th>
+  </tr>
+  <tr>
+    <td>田中</td>
+    <td>泌尿器科</td>
+  </tr>
+  <tr>
+    <td>鈴木</td>
+    <td>皮膚科</td>
+  </tr>
+</table>
+>> css
+table { border-collapse: collapse; }
+th, td { border: 1px solid #99a; padding: 6px 12px; }
+th { background: #eef1f8; }
+>> notes
+- 初期設定では罫線がありません。CSSで `border` を指定します。
+- 罫線の間の隙間をなくすには `border-collapse: collapse` を使います。
+
+@@ caption
+tag: <caption>
+title: 表のタイトル
+group: table
+summary: 表の内容を説明するタイトルをつける。
+keywords: きゃぷしょん 表題 表の説明 タイトル
+related: table
+>> explain
+`<caption>` は、表のタイトルです。`<table>` の中の最初の子として書きます。表の内容を読み上げソフトなどに伝える役割もあります。
+>> html
+<table>
+  <caption>診療時間</caption>
+  <tr><th>曜日</th><th>時間</th></tr>
+  <tr><td>平日</td><td>9:00〜18:00</td></tr>
+</table>
+>> css
+table { border-collapse: collapse; }
+th, td { border: 1px solid #99a; padding: 6px 12px; }
+caption { font-weight: bold; margin-bottom: 4px; }
+>> notes
+- 初期設定では、表の上に中央揃えで表示されます。
+
+@@ col
+tag: <col>
+title: 列の設定
+group: table
+summary: 表の列に、まとめて幅や背景を指定する。
+keywords: こる 列 カラム 幅 列の設定
+related: colgroup, table
+>> explain
+`<col>` は、`<colgroup>` の中で、表の1列分の設定(幅や背景など)を指定します。各セルに設定しなくても、列単位でまとめて指定できます。
+>> html
+<table>
+  <colgroup>
+    <col style="background:#eef3ff">
+    <col>
+  </colgroup>
+  <tr><th>名前</th><th>科</th></tr>
+  <tr><td>田中</td><td>泌尿器科</td></tr>
+</table>
+>> css
+table { border-collapse: collapse; }
+th, td { border: 1px solid #99a; padding: 6px 12px; }
+>> notes
+- 列に指定できるCSSは限られています(幅、背景、罫線など)。
+- 終了タグはありません。
+
+@@ colgroup
+tag: <colgroup>
+title: 列のグループ
+group: table
+summary: 表の列をまとめて、グループとして設定する。
+keywords: こるぐるーぷ 列 グループ 設定
+related: col, table
+>> explain
+`<colgroup>` は、表の列をグループにまとめる要素です。中に `<col>` を並べ、列ごとの設定を書きます。`<caption>` の後、最初の行より前に置きます。
+>> html
+<table>
+  <colgroup>
+    <col style="width:100px">
+    <col style="width:200px">
+  </colgroup>
+  <tr><th>名前</th><th>診療科</th></tr>
+  <tr><td>田中</td><td>泌尿器科</td></tr>
+</table>
+>> css
+table { border-collapse: collapse; }
+th, td { border: 1px solid #99a; padding: 6px 12px; }
+>> notes
+- 列を分けて設定する必要がなければ、書かなくても表は作れます。
+
+@@ tbody
+tag: <tbody>
+title: 表の本体
+group: table
+summary: 表の本体にあたる行をまとめる。
+keywords: てぃーぼでぃー 本体 行のグループ
+related: thead, tfoot, table
+>> explain
+`<tbody>` は、見出し部分(`<thead>`)や、まとめ部分(`<tfoot>`)を除いた、表の本体の行をまとめます。省略してもブラウザが自動で補いますが、書くとCSSで本体だけを指定しやすくなります。
+>> html
+<table>
+  <thead><tr><th>名前</th><th>点数</th></tr></thead>
+  <tbody>
+    <tr><td>田中</td><td>80</td></tr>
+    <tr><td>鈴木</td><td>75</td></tr>
+  </tbody>
+</table>
+>> css
+table { border-collapse: collapse; }
+th, td { border: 1px solid #99a; padding: 6px 12px; }
+tbody tr:nth-child(even) { background: #f3f5fb; }
+>> notes
+- `<tbody>` を書かなくても、ブラウザが自動で補います。
+
+@@ td
+tag: <td>
+title: 表のデータセル
+group: table
+summary: 表の中の、データを入れる1マス。
+keywords: てぃーでぃー セル データ 1マス colspan rowspan
+related: th, tr, table
+>> explain
+`<td>` は、表のデータ1マスです。`colspan` で横に、`rowspan` で縦に、複数のマスを結合できます。
+>> html
+<table>
+  <tr><th>項目</th><th>値</th></tr>
+  <tr><td>年齢</td><td>45</td></tr>
+  <tr><td colspan="2">2マス分を使った行</td></tr>
+</table>
+>> css
+table { border-collapse: collapse; }
+th, td { border: 1px solid #99a; padding: 6px 12px; }
+>> notes
+- `<td>` は `<tr>` の中で使います。
+
+@@ tfoot
+tag: <tfoot>
+title: 表のまとめ部分
+group: table
+summary: 表の合計行など、まとめにあたる行をまとめる。
+keywords: てぃーふーと 合計 まとめ 表の最後
+related: thead, tbody, table
+>> explain
+`<tfoot>` は、表の合計や集計のように、表のまとめにあたる行をまとめます。
+>> html
+<table>
+  <thead><tr><th>品目</th><th>金額</th></tr></thead>
+  <tbody>
+    <tr><td>A</td><td>100</td></tr>
+    <tr><td>B</td><td>200</td></tr>
+  </tbody>
+  <tfoot><tr><th>合計</th><td>300</td></tr></tfoot>
+</table>
+>> css
+table { border-collapse: collapse; }
+th, td { border: 1px solid #99a; padding: 6px 12px; }
+tfoot { background: #eef1f8; font-weight: bold; }
+>> notes
+- 書く位置は `<tbody>` の後です。画面では表の最後に表示されます。
+
+@@ th
+tag: <th>
+title: 表の見出しセル
+group: table
+summary: 表の中の見出しにあたる1マス。太字・中央揃えになる。
+keywords: てぃーえいち 見出し セル 見出しセル scope
+related: td, tr, table
+>> explain
+`<th>` は、表の見出しにあたるセルです。初期設定では、太字で中央揃えになります。
+
+`scope="col"`(その列の見出し)や `scope="row"`(その行の見出し)を付けると、見出しと中身の関係が機械に伝わります。
+>> html
+<table>
+  <tr><th scope="col">名前</th><th scope="col">科</th></tr>
+  <tr><th scope="row">田中</th><td>泌尿器科</td></tr>
+</table>
+>> css
+table { border-collapse: collapse; }
+th, td { border: 1px solid #99a; padding: 6px 12px; }
+>> notes
+- 見出しは、見た目のためではなく、意味に合わせて `<th>` にします。
+
+@@ thead
+tag: <thead>
+title: 表の見出し部分
+group: table
+summary: 表の見出し行をまとめる。
+keywords: てぃーへっど 見出し行 ヘッダー行
+related: tbody, tfoot, table
+>> explain
+`<thead>` は、表の見出しにあたる行をまとめる要素です。長い表を印刷するときに、見出し行が各ページの先頭に繰り返されることがあります。
+>> html
+<table>
+  <thead>
+    <tr><th>名前</th><th>点数</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>田中</td><td>80</td></tr>
+  </tbody>
+</table>
+>> css
+table { border-collapse: collapse; }
+th, td { border: 1px solid #99a; padding: 6px 12px; }
+thead { background: #eef1f8; }
+>> notes
+- `<thead>` の中には `<tr>` を置きます。
+
+@@ tr
+tag: <tr>
+title: 表の行
+group: table
+summary: 表の中の、横1行。
+keywords: てぃーあーる 行 ロウ 横
+related: td, th, table
+>> explain
+`<tr>` は、表の1行(横の並び)を表します。中に `<th>` や `<td>` を並べて、その行のセルにします。
+>> html
+<table>
+  <tr><td>左</td><td>真ん中</td><td>右</td></tr>
+  <tr><td>左</td><td>真ん中</td><td>右</td></tr>
+</table>
+>> css
+table { border-collapse: collapse; }
+td { border: 1px solid #99a; padding: 6px 12px; }
+tr:hover { background: #f3f5fb; }
+>> notes
+- `<tr>` の直接の子は `<th>` か `<td>` にします。

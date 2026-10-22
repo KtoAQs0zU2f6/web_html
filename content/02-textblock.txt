@@ -1,0 +1,270 @@
+@@ blockquote
+tag: <blockquote>
+title: 引用(ブロック)
+group: textblock
+summary: ほかの文章から引用した、まとまった文章を示す。
+keywords: ぶろっくくぉーと いんよう 引用文 cite
+related: q, cite, figure
+>> explain
+`<blockquote>` は、ほかの人や資料から引用した文章のまとまりに使います。出典のURLは `cite` 属性に書けます。
+
+出典の名前を画面に見せたいときは、`<figure>` と `<figcaption>`、`<cite>` を組み合わせます。
+>> html
+<blockquote cite="https://example.com/source">
+  <p>引用したい文章がここに入ります。</p>
+</blockquote>
+>> css
+blockquote { margin: 0; padding: 8px 16px; border-left: 4px solid #99a; background: #f6f7fb; }
+>> notes
+- 初期設定では左右に余白ができます。
+- 文中の短い引用は `<q>` を使います。
+
+@@ dd
+tag: <dd>
+title: 説明リストの説明
+group: textblock
+summary: 説明リストで、用語に対する説明の部分。
+keywords: でぃーでぃー 説明 定義 dl dt
+related: dl, dt
+>> explain
+`<dd>` は、`<dl>`(説明リスト)の中で、用語 `<dt>` に対する説明を書く部分です。1つの用語に、説明を複数つけることもできます。
+>> html
+<dl>
+  <dt>HTML</dt>
+  <dd>ウェブページの構造を書くための言語。</dd>
+</dl>
+>> notes
+- `<dd>` は `<dl>` の中で使います。
+
+@@ div
+tag: <div>
+title: 意味を持たない箱
+group: textblock
+summary: 特別な意味はなく、まとまりを作ってCSSで整えるための箱。
+keywords: でぃぶ 箱 グループ レイアウト コンテナ
+related: span, section, flexbox
+>> explain
+`<div>` は、意味を持たない汎用の箱です。まとめてCSSを当てたり、レイアウトを組んだりするときに使います。
+
+意味のあるタグ(`<section>`、`<article>`、`<nav>` など)があるときは、そちらを優先します。
+>> html
+<div class="box">
+  <p>div の中の文章です。</p>
+</div>
+>> css
+.box { background: #eef3ff; border: 2px solid #5b7bd5; padding: 16px; border-radius: 8px; }
+>> notes
+- 初期設定では、横幅いっぱいに広がる箱になります。
+- 意味のあるタグが使える場面で、`<div>` を多用しない方が構造が伝わります。
+
+@@ dl
+tag: <dl>
+title: 説明リスト
+group: textblock
+summary: 用語とその説明を対にして並べるリスト。
+keywords: でぃーえる 説明リスト 定義リスト 用語 dt dd
+related: dt, dd, ul
+>> explain
+`<dl>` は、用語(`<dt>`)とその説明(`<dd>`)を対にして並べるときに使うリストです。用語集や、項目と値の組を並べる場面に向いています。
+>> html
+<dl>
+  <dt>診療科</dt>
+  <dd>泌尿器科・腎臓内科</dd>
+  <dt>診療時間</dt>
+  <dd>平日 9:00〜18:00</dd>
+</dl>
+>> css
+dt { font-weight: bold; }
+dd { margin: 0 0 8px 1em; }
+>> notes
+- 用語と説明の対応を保ったまま、`<div>` でグループ化することもできます。
+
+@@ dt
+tag: <dt>
+title: 説明リストの用語
+group: textblock
+summary: 説明リストで、説明される側の用語の部分。
+keywords: でぃーてぃー 用語 項目名 dl dd
+related: dl, dd
+>> explain
+`<dt>` は、`<dl>`(説明リスト)の中で、説明される用語や項目名を書く部分です。直後に `<dd>` で説明を書きます。
+>> html
+<dl>
+  <dt>URL</dt>
+  <dd>インターネット上の住所にあたる文字列。</dd>
+</dl>
+>> notes
+- `<dt>` は `<dl>` の中で使います。
+
+@@ figcaption
+tag: <figcaption>
+title: 図のキャプション
+group: textblock
+summary: 図や写真につける説明文。`<figure>` の中で使う。
+keywords: ふぃぐきゃぷしょん キャプション 図の説明 写真の説明
+related: figure, img
+>> explain
+`<figcaption>` は、`<figure>` に入れた画像や図に対する説明(キャプション)です。`<figure>` の最初か最後に1つだけ置きます。
+>> html
+<figure>
+  <img src="sample.svg" alt="山と太陽のイラスト" width="240">
+  <figcaption>図1 サンプル画像</figcaption>
+</figure>
+>> notes
+- `<figure>` の外では使えません。
+
+@@ figure
+tag: <figure>
+title: 図・写真のまとまり
+group: textblock
+summary: 図、写真、コードなどを、説明文と組にして囲む。
+keywords: ふぃぎゅあ 図 写真 キャプション 図版
+related: figcaption, img
+>> explain
+`<figure>` は、本文から独立して意味を持つ図、写真、コード、表などを囲むタグです。`<figcaption>` で説明をつけられます。
+
+本文の流れの外に移しても、意味が通じるものに使います。
+>> html
+<figure>
+  <img src="sample.svg" alt="山と太陽のイラスト" width="240">
+  <figcaption>図1 サンプル画像</figcaption>
+</figure>
+>> css
+figure { margin: 0; display: inline-block; text-align: center; }
+figcaption { font-size: 14px; color: #556; }
+>> notes
+- 初期設定では左右に余白がつきます。
+
+@@ hr
+tag: <hr>
+title: 区切り線
+group: textblock
+summary: 話題の切れ目を示す、水平な区切り線。
+keywords: えいちあーる 区切り線 水平線 罫線 ライン
+related: p, section
+>> explain
+`<hr>` は、話題が変わる切れ目を表すタグで、初期設定では水平線として表示されます。終了タグはありません。
+
+線を引くこと自体が目的なら、CSSの `border` を使う方法もあります。
+>> html
+<p>最初の話題です。</p>
+<hr>
+<p>次の話題です。</p>
+>> css
+hr { border: 0; border-top: 2px dashed #99a; }
+>> notes
+- 意味は「話題の区切り」です。飾りの線にはCSSを使います。
+
+@@ li
+tag: <li>
+title: リストの項目
+group: textblock
+summary: `<ul>` や `<ol>` の中の、1つ1つの項目。
+keywords: りすと こうもく 箇条書き 項目
+related: ul, ol, menu
+>> explain
+`<li>` は、リストの1項目を表します。`<ul>`(番号なし)、`<ol>`(番号つき)、`<menu>` の中で使います。
+>> html
+<ul>
+  <li>りんご</li>
+  <li>みかん</li>
+  <li>ぶどう</li>
+</ul>
+>> notes
+- `<li>` は、リストの外では使えません。
+
+@@ menu
+tag: <menu>
+title: コマンドのメニュー
+group: textblock
+summary: 操作やボタンなどの一覧。見た目は `<ul>` と同じ。
+keywords: めにゅー ツールバー 操作 リスト
+related: ul, li, button
+>> explain
+`<menu>` は、ボタンなど「操作」を並べたリストに使うタグです。中には `<li>` を入れます。
+
+ブラウザでの見た目は `<ul>` と同じです。ナビゲーションの目的には `<nav>` と `<ul>` を使います。
+>> html
+<menu>
+  <li><button type="button">保存</button></li>
+  <li><button type="button">削除</button></li>
+</menu>
+>> notes
+- ページ内の移動用リンク集には向きません。そちらは `<nav>` を使います。
+
+@@ ol
+tag: <ol>
+title: 番号つきリスト
+group: textblock
+summary: 順番に意味がある項目を、番号をつけて並べる。
+keywords: おーえる 番号 順序 手順 ステップ
+related: ul, li
+>> explain
+`<ol>` は、順番に意味がある項目を並べるリストです。手順やランキングなどに使い、項目には自動で番号がつきます。
+
+`start` 属性で開始番号を、`reversed` で逆順を指定できます。
+>> html
+<ol>
+  <li>受付をする</li>
+  <li>問診票を書く</li>
+  <li>診察を受ける</li>
+</ol>
+>> notes
+- 順番に意味がないものは `<ul>` を使います。
+
+@@ p
+tag: <p>
+title: 段落
+group: textblock
+summary: 文章の段落を表す、もっとも基本的なタグ。
+keywords: ぴー だんらく 文章 パラグラフ 本文
+related: br, div, h1
+>> explain
+`<p>` は、文章の1つのまとまり(段落)を表します。前後に自動で余白ができるので、段落の間隔をあけるために改行を重ねる必要はありません。
+
+段落の中で改行したいだけのときは、`<br>` を使います。
+>> html
+<p>最初の段落です。</p>
+<p>次の段落です。段落の間には余白ができます。</p>
+>> notes
+- 空の `<p>` を並べて余白を作るのは避け、CSSの余白を使います。
+
+@@ pre
+tag: <pre>
+title: 整形済みテキスト
+group: textblock
+summary: 空白や改行をそのまま表示する。コード表示などに使う。
+keywords: ぷれ コード 整形済み 空白 改行 等幅
+related: code, samp
+>> explain
+`<pre>` は、書いたとおりの空白と改行をそのまま表示するタグです。等幅フォントで表示されるので、プログラムのコードや、桁をそろえた文字に向いています。
+
+コードを表すときは、`<pre>` の中に `<code>` を入れます。
+>> html
+<pre><code>function hello() {
+  return "こんにちは";
+}</code></pre>
+>> notes
+- 長い行は折り返されず、横にはみ出します。CSSの `overflow: auto` でスクロールにできます。
+
+@@ ul
+tag: <ul>
+title: 番号なしリスト
+group: textblock
+summary: 順番に意味がない項目を、点つきで並べる。
+keywords: あんぱーえる 箇条書き 点 リスト 順序なし
+related: ol, li, nav
+>> explain
+`<ul>` は、順番に意味がない項目を並べる、箇条書きのリストです。初期設定では項目の前に黒い点が表示されます。
+
+メニューの横並びなど、点が不要なときは、CSSで `list-style: none` を指定します。
+>> html
+<ul>
+  <li>りんご</li>
+  <li>みかん</li>
+  <li>ぶどう</li>
+</ul>
+>> css
+ul { padding-left: 1.5em; }
+>> notes
+- `<ul>` の直接の子は `<li>` にします。

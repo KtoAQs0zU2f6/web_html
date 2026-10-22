@@ -1,0 +1,319 @@
+@@ area
+tag: <area>
+title: 画像の中のクリック範囲
+group: media
+summary: 画像の一部分をリンクにする範囲を決める。
+keywords: えりあ 画像 クリック範囲 イメージマップ coords
+related: map, img
+>> explain
+`<area>` は、`<map>` の中で、画像の一部をクリックできるリンクの範囲として定義します。`shape` で形、`coords` で座標を指定します。
+>> html
+<img src="sample.svg" width="320" alt="サンプル画像" usemap="#m1">
+<map name="m1">
+  <area shape="rect" coords="0,0,160,90" href="https://example.com/left" alt="左上の領域">
+  <area shape="circle" coords="240,55,22" href="https://example.com/sun" alt="太陽">
+</map>
+>> notes
+- 座標は画像の左上を (0,0) とした、ピクセルの数値です。
+- 画像の大きさを変えると、座標はずれます。
+
+@@ audio
+tag: <audio>
+title: 音声プレーヤー
+group: media
+summary: 音声ファイルを再生する部品を表示する。
+keywords: おーでぃお 音声 音楽 再生 サウンド
+related: video, source, track
+>> explain
+`<audio>` は、音声を再生するプレーヤーを表示します。`controls` 属性を付けると、再生ボタンなどが表示されます。
+
+複数の形式のファイルを用意するときは、`<source>` を並べます。
+>> html
+<audio controls src="sound.mp3">
+  お使いのブラウザは audio に対応していません。
+</audio>
+>> notes
+- 例のファイル(sound.mp3)は実在しないため、再生はできません。自分のファイルに置き換えて試します。
+- 自動再生は、ブラウザによって制限されます。
+
+@@ img
+tag: <img>
+title: 画像
+group: media
+summary: ページに画像を表示する。`alt` で代わりの文字を添える。
+keywords: いめーじ 画像 写真 イラスト src alt
+related: picture, figure, a
+>> explain
+`<img>` は、画像を表示します。`src` で画像ファイルの場所を、`alt` で画像の代わりになる文字を指定します。
+
+`alt` は、画像が表示できないときや、読み上げソフトを使うときに使われる大事な情報です。
+>> html
+<img src="sample.svg" alt="山と太陽のイラスト" width="240">
+>> css
+img { max-width: 100%; height: auto; }
+>> notes
+- `alt` は省略せず、内容を伝える文字を入れます。飾りの画像なら `alt=""` と空にします。
+- `width` と `height` を書くと、読み込み中のレイアウトのずれが減ります。
+
+@@ map
+tag: <map>
+title: イメージマップ
+group: media
+summary: 画像の中のクリック範囲(`<area>`)をまとめる。
+keywords: まっぷ イメージマップ 画像リンク area
+related: area, img
+>> explain
+`<map>` は、画像に重ねるクリック範囲を、`<area>` でまとめて定義する要素です。`name` 属性をつけ、画像側の `usemap="#名前"` から結びつけます。
+>> html
+<img src="sample.svg" width="320" alt="サンプル画像" usemap="#m2">
+<map name="m2">
+  <area shape="rect" coords="0,90,320,180" href="https://example.com/bottom" alt="下半分">
+</map>
+>> notes
+- `name` と `usemap` の名前を一致させます(`usemap` には `#` を付けます)。
+
+@@ track
+tag: <track>
+title: 字幕・テキストトラック
+group: media
+summary: 動画や音声に、字幕などのテキストを加える。
+keywords: とらっく 字幕 キャプション vtt テキストトラック
+related: video, audio, source
+nopreview: 字幕ファイル(.vtt)と動画が必要なため、この図鑑では結果を表示しません。
+>> explain
+`<track>` は、`<video>` や `<audio>` の中に置いて、字幕や説明文などのテキストを加えます。`src` に字幕ファイル(WebVTT形式)を指定します。
+>> html
+<video controls src="movie.mp4">
+  <track kind="subtitles" src="subs_ja.vtt" srclang="ja" label="日本語" default>
+</video>
+>> notes
+- 字幕ファイルは、ウェブサイトと同じ場所から配信する必要がある場合があります。
+
+@@ video
+tag: <video>
+title: 動画プレーヤー
+group: media
+summary: 動画ファイルを再生する部品を表示する。
+keywords: びでお 動画 ムービー 再生 mp4
+related: audio, source, track
+>> explain
+`<video>` は、動画を再生するプレーヤーを表示します。`controls` 属性で再生ボタンなどを出し、`poster` で再生前の画像を指定できます。
+>> html
+<video controls width="320" src="movie.mp4">
+  お使いのブラウザは video に対応していません。
+</video>
+>> notes
+- 例のファイル(movie.mp4)は実在しないため、再生はできません。自分のファイルに置き換えて試します。
+- 音つきの自動再生は、ブラウザによって制限されます。
+
+@@ embed
+tag: <embed>
+title: 外部コンテンツの埋め込み
+group: embed
+summary: 外部のアプリやコンテンツをページに埋め込む。
+keywords: えんべっど 埋め込み プラグイン pdf
+related: object, iframe
+>> explain
+`<embed>` は、外部のファイルやアプリケーションをページに埋め込みます。`src` で場所を、`type` でファイルの種類を指定します。
+
+近年は、HTMLの標準タグで済む場面が多く、使う機会は限られます。
+>> html
+<embed src="sample.svg" type="image/svg+xml" width="240" height="135">
+>> notes
+- 終了タグはありません。
+- 埋め込めるかどうかは、ブラウザと内容の種類によって変わります。
+
+@@ iframe
+tag: <iframe>
+title: ページの中に別ページを表示
+group: embed
+summary: 枠の中に、別のページを表示する。
+keywords: あいふれーむ 埋め込み 地図 動画 インラインフレーム
+related: embed, object
+>> explain
+`<iframe>` は、ページの中に別のページを表示する枠を作ります。地図や動画の埋め込みによく使います。
+
+`title` 属性で枠の内容を説明しておくと、読み上げソフトを使う人に親切です。
+>> html
+<iframe title="枠の中のページ" width="300" height="100"
+  srcdoc="&lt;p&gt;枠の中のページです&lt;/p&gt;"></iframe>
+>> notes
+- 相手のサイトが、埋め込みを許可していない場合があります。
+- この図鑑の「実行結果」も、iframe の中に表示しています。
+
+@@ object
+tag: <object>
+title: 外部ファイルの埋め込み
+group: embed
+summary: 画像やPDFなどの外部ファイルをページに埋め込む。
+keywords: おぶじぇくと 埋め込み pdf svg
+related: embed, iframe
+>> explain
+`<object>` は、画像、PDF、SVGなどの外部ファイルを埋め込みます。`data` で場所を、`type` で種類を指定します。
+
+埋め込めなかったときに表示する代わりの内容を、タグの中に書けます。
+>> html
+<object data="sample.svg" type="image/svg+xml" width="240" height="135">
+  画像を表示できませんでした
+</object>
+>> notes
+- 使う機会は多くありません。画像には `<img>` を使います。
+
+@@ picture
+tag: <picture>
+title: 画像の出し分け
+group: embed
+summary: 画面の条件に合わせて、表示する画像を切り替える。
+keywords: ぴくちゃー 画像 出し分け レスポンシブ webp
+related: img, source
+>> explain
+`<picture>` は、画面の幅や、対応する画像形式に合わせて、表示する画像を出し分けます。中に `<source>` を並べ、最後に必ず `<img>` を置きます。
+>> html
+<picture>
+  <source media="(min-width: 600px)" srcset="sample.svg">
+  <img src="sample.svg" alt="山と太陽のイラスト" width="240">
+</picture>
+>> notes
+- 最後の `<img>` は必須です。これがないと、画像が表示されません。
+
+@@ source
+tag: <source>
+title: 複数の素材候補
+group: embed
+summary: 画像・音声・動画の、候補となるファイルを指定する。
+keywords: そーす 候補 srcset 形式 出し分け
+related: picture, video, audio
+>> explain
+`<source>` は、`<picture>`、`<video>`、`<audio>` の中で、候補となるファイルの場所と条件を指定します。ブラウザが、対応する最初のものを選びます。
+>> html
+<picture>
+  <source srcset="sample.svg" type="image/svg+xml">
+  <img src="sample.svg" alt="山と太陽のイラスト" width="240">
+</picture>
+>> notes
+- `<picture>` の中では `srcset`、`<video>` と `<audio>` の中では `src` を使います。
+
+@@ svg
+tag: <svg>
+title: ベクター図形
+group: embed
+summary: ページの中に、拡大しても荒れない図形を直接描く。
+keywords: えすぶいじー 図形 ベクター アイコン 円 四角
+related: img, canvas
+>> explain
+`<svg>` は、ベクター形式の図形を、HTMLの中に直接書けるタグです。拡大しても荒れないため、アイコンや図に向いています。
+
+中に `<circle>`(円)、`<rect>`(四角)、`<path>`(線)などを書いて描きます。
+>> html
+<svg width="200" height="100" viewBox="0 0 200 100" role="img" aria-label="円と四角">
+  <rect x="10" y="20" width="80" height="60" fill="#5b7bd5"/>
+  <circle cx="150" cy="50" r="30" fill="#e0804a"/>
+</svg>
+>> notes
+- `viewBox` を指定すると、大きさを変えても形が保たれます。
+- `<svg>` の中の各図形タグは、この図鑑では個別に解説していません。
+
+@@ math
+tag: <math>
+title: 数式(MathML)
+group: embed
+summary: 数式を表示するための、MathMLの外側のタグ。
+keywords: ます 数式 分数 mathml
+related: sup, var
+>> explain
+`<math>` は、数式を書くための MathML の外側のタグです。この中に `<mfrac>`(分数)や `<msup>`(累乗)などの専用タグを入れて数式を組み立てます。
+>> html
+<math display="block">
+  <mfrac>
+    <mn>1</mn>
+    <mn>2</mn>
+  </mfrac>
+</math>
+>> notes
+- 数式用の各タグは、この図鑑では個別に解説していません。
+- 古いブラウザでは表示されない場合があります。
+
+@@ canvas
+tag: <canvas>
+title: 描画領域
+group: scripting
+summary: JavaScriptで図形やグラフィックを描くための領域。
+keywords: きゃんばす 描画 グラフィック ゲーム 絵
+related: svg, script
+>> explain
+`<canvas>` は、JavaScriptで線や図形を描くための白紙の領域です。HTMLのタグだけでは何も描かれず、描画はスクリプトで行います。
+
+下の例では、スクリプトで四角を1つ描いています。JavaScriptの書き方は、この図鑑では解説しません。
+>> html
+<canvas id="c" width="200" height="100" style="border:1px solid #99a"></canvas>
+<script>
+  var ctx = document.getElementById("c").getContext("2d");
+  ctx.fillStyle = "#5b7bd5";
+  ctx.fillRect(20, 20, 80, 50);
+</script>
+>> notes
+- `width` と `height` はHTMLの属性で指定します。CSSで大きさを変えると、絵が引き伸ばされます。
+
+@@ noscript
+tag: <noscript>
+title: JavaScriptが使えないとき
+group: scripting
+summary: JavaScriptが使えない環境で表示する内容を書く。
+keywords: のーすくりぷと スクリプト無効 代替
+related: script
+nopreview: JavaScriptが無効な環境でだけ表示されるため、この図鑑の結果枠では見えません。
+>> explain
+`<noscript>` の中に書いた内容は、ブラウザでJavaScriptが使えないときにだけ表示されます。JavaScriptが必要なページで、お知らせを出す場面に使います。
+>> html
+<noscript>
+  <p>このページはJavaScriptを有効にしてご利用ください。</p>
+</noscript>
+>> notes
+- JavaScriptが使える環境では、中身は表示されません。
+
+@@ script
+tag: <script>
+title: JavaScriptを実行する
+group: scripting
+summary: JavaScriptのプログラムをページに書き込んで実行する。
+keywords: すくりぷと javascript js プログラム 実行
+related: canvas, noscript
+>> explain
+`<script>` は、JavaScriptを実行するタグです。この図鑑では、JavaScriptの書き方は解説しません。
+>> html
+<p id="msg">(ここに結果が出ます)</p>
+<script>
+  document.getElementById("msg").textContent = "JavaScriptが実行されました";
+</script>
+>> notes
+- JavaScriptの中身はこの図鑑の対象外です。
+- 外部のファイルを読み込むときは、`src` 属性にファイルの場所を書きます。
+
+@@ del
+tag: <del>
+title: 削除した内容
+group: edits
+summary: 文書から削除された内容を示す。取り消し線で表示される。
+keywords: でる 削除 取り消し 修正履歴 打ち消し
+related: ins, s
+>> explain
+`<del>` は、文書から削除された内容を示します。ブラウザでは取り消し線で表示されます。`<ins>` と組み合わせて、修正の履歴を表せます。
+>> html
+<p>診察は <del>午前のみ</del> <ins>終日</ins> 行います。</p>
+>> notes
+- `datetime` 属性で、削除した日時を示せます。
+- 単に取り消し線を引くだけなら `<s>` を使います。
+
+@@ ins
+tag: <ins>
+title: 追加した内容
+group: edits
+summary: 文書に追加された内容を示す。下線で表示される。
+keywords: いんず 追加 挿入 修正履歴 下線
+related: del
+>> explain
+`<ins>` は、文書に追加された内容を示します。ブラウザでは下線で表示されます。`<del>` と組み合わせて、修正の履歴を表せます。
+>> html
+<p>年末年始は <ins>12月29日から1月3日まで</ins> 休診です。</p>
+>> notes
+- 下線は、リンクと見分けにくいことがあります。CSSで見た目を変えられます。

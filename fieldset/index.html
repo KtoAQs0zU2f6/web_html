@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>フォーム部品のグループ（fieldset）｜HTML・CSS コード図鑑</title>
+<meta name="description" content="関連する入力欄を枠で囲んでグループにする。">
+<link rel="canonical" href="https://KtoAQs0zU2f6.github.io/web_html/fieldset/">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../">
+<header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="../">HTML・CSS コード図鑑</a>
+    <div class="search">
+      <input id="q" type="search" placeholder="コードを検索(例: 表、ボタン、中央寄せ)" aria-label="コードを検索" autocomplete="off">
+      <ul id="results" class="results" hidden></ul>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <nav class="crumb"><a href="../">トップ</a> › フォーム</nav>
+  <h1>フォーム部品のグループ <code class="tagname">&lt;fieldset&gt;</code></h1>
+  <p class="lead">関連する入力欄を枠で囲んでグループにする。</p>
+  <p class="meta">HTML要素 ／ フォーム</p>
+  <p class="badge-unreviewed">この解説は確認前です。内容に誤りがある可能性があります。</p>
+  <section>
+    <h2>何ができるか</h2>
+    <p><code>&lt;fieldset&gt;</code> は、関連するフォーム部品を1つのグループにまとめ、枠で囲みます。中の最初に <code>&lt;legend&gt;</code> を置くと、グループの名前になります。</p>
+  </section>
+  <section><h2>実行結果</h2><iframe class="preview" title="実行結果" sandbox="allow-scripts" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;ja&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;style&gt;body{font-family:sans-serif;margin:12px;line-height:1.6}&lt;/style&gt;&lt;style&gt;&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;fieldset&gt;
+  &lt;legend&gt;性別&lt;/legend&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;g&quot; value=&quot;m&quot;&gt; 男性&lt;/label&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;g&quot; value=&quot;f&quot;&gt; 女性&lt;/label&gt;
+&lt;/fieldset&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></section>
+  <section>
+    <h2>コード</h2>
+    <div class="codeblock"><div class="bar"><span>HTML</span><button type="button" class="copy" data-target="code-html">コピー</button></div><pre id="code-html"><code>&lt;fieldset&gt;
+  &lt;legend&gt;性別&lt;/legend&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;g&quot; value=&quot;m&quot;&gt; 男性&lt;/label&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;g&quot; value=&quot;f&quot;&gt; 女性&lt;/label&gt;
+&lt;/fieldset&gt;</code></pre></div>
+    
+  </section>
+  <section id="playground" class="playground"><h2>試してみる</h2><p>左の欄を書き換えると、右の結果がすぐ変わります。</p><div class="pg-grid"><div class="pg-edit"><label for="pg-html">HTML</label><textarea id="pg-html" spellcheck="false" autocomplete="off">&lt;fieldset&gt;
+  &lt;legend&gt;性別&lt;/legend&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;g&quot; value=&quot;m&quot;&gt; 男性&lt;/label&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;g&quot; value=&quot;f&quot;&gt; 女性&lt;/label&gt;
+&lt;/fieldset&gt;</textarea><label for="pg-css">CSS</label><textarea id="pg-css" spellcheck="false" autocomplete="off"></textarea><button type="button" id="pg-reset">元に戻す</button></div><div class="pg-out"><iframe id="pg-frame" class="preview" title="試す場所の結果" sandbox="allow-scripts" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;ja&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;style&gt;body{font-family:sans-serif;margin:12px;line-height:1.6}&lt;/style&gt;&lt;style&gt;&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;fieldset&gt;
+  &lt;legend&gt;性別&lt;/legend&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;g&quot; value=&quot;m&quot;&gt; 男性&lt;/label&gt;
+  &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;g&quot; value=&quot;f&quot;&gt; 女性&lt;/label&gt;
+&lt;/fieldset&gt;&lt;/body&gt;&lt;/html&gt;"></iframe></div></div></section>
+  <section><h2>注意点</h2><ul><li><code>disabled</code> 属性を付けると、グループの中の部品をまとめて無効にできます。</li></ul></section>
+  <section><h2>関連コード</h2><ul class="related"><li><a href="../legend/"><code>&lt;legend&gt;</code> グループの名前</a></li><li><a href="../form/"><code>&lt;form&gt;</code> フォーム</a></li></ul></section>
+  <p class="mdn">さらに詳しい仕様: <a href="https://developer.mozilla.org/ja/docs/Web/HTML/Reference/Elements/fieldset" rel="noopener">MDN Web Docs</a></p>
+</main>
+<footer class="site-footer"><div class="wrap"><a href="../">HTML・CSS コード図鑑</a></div></footer>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/search.js"></script>
+<script src="../assets/page.js"></script>
+</body>
+</html>
